@@ -17,12 +17,11 @@ import {
 	Header,
 } from 'antd/es/layout/layout'
 import {
-	GithubOutlined,
 	LogoutOutlined,
 	PlusOutlined,
 	UserOutlined,
 } from '@ant-design/icons'
-import { FaDiscord } from 'react-icons/fa'
+import { FaDiscord, FaGithub } from 'react-icons/fa'
 import { ImTwitch } from 'react-icons/im'
 import { NewArticle } from './NewArticle'
 import { IconContext } from 'react-icons'
@@ -116,12 +115,13 @@ function App() {
 						<IconContext.Provider
 							value={{
 								color: token.colorPrimary,
+								className: 'text-3xl',
 							}}
 						>
 							<Flex gap="large">
-								<ImTwitch className="text-3xl" />
-								<FaDiscord className="text-3xl" />
-								<GithubOutlined className="text-3xl" />
+								<ImTwitch />
+								<FaDiscord />
+								<FaGithub />
 								<Dropdown
 									menu={{
 										items: [
