@@ -101,7 +101,7 @@ function App() {
 			}}
 		>
 			<Layout>
-				<Header className="sticky top-0 backdrop-blur-md">
+				<Header className="sticky top-0 z-10 backdrop-blur-md">
 					<Flex
 						align="center"
 						justify="space-between"
