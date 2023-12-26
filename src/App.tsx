@@ -21,7 +21,7 @@ function App() {
 
 	return (
 		<>
-			<Flex>
+			<Flex vertical gap="large">
 				{articles.map(ad => (
 					<Article {...ad} />
 				))}
