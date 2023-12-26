@@ -1,7 +1,8 @@
 import { useState } from 'react'
-import { Flex } from 'antd'
+import { ConfigProvider, Flex, Layout, Space } from 'antd'
 import { ArticleData } from './interface'
 import { Article } from './Article'
+import { Content, Header } from 'antd/es/layout/layout'
 
 const data: Array<ArticleData> = [
 	{
@@ -20,13 +21,43 @@ function App() {
 	const [articles, _] = useState(data)
 
 	return (
-		<>
-			<Flex vertical gap="large">
-				{articles.map(ad => (
-					<Article {...ad} />
-				))}
-			</Flex>
-		</>
+		<ConfigProvider
+			theme={{
+				components: {
+					Layout: {
+						headerBg: 'inherit',
+						bodyBg: 'inherit',
+					},
+				},
+			}}
+		>
+			<Layout>
+				<Header
+					style={{
+						position: 'sticky',
+						top: 0,
+					}}
+				>
+					UpDict
+				</Header>
+				<Content>
+					<Flex justify="center">
+						<Flex
+							vertical
+							gap="large"
+							style={{
+								width: '100%',
+								maxWidth: 500,
+							}}
+						>
+							{articles.map(ad => (
+								<Article {...ad} />
+							))}
+						</Flex>
+					</Flex>
+				</Content>
+			</Layout>
+		</ConfigProvider>
 	)
 }
 
