@@ -10,12 +10,12 @@ export const Article = ({
 	return (
 		<div
 			style={{
-				backgroundColor: 'lightgray',
+				backgroundColor: '#eee',
 				padding: 10,
 			}}
 		>
-			<Flex>
-				<Flex vertical>
+			<Flex gap="small">
+				<Flex vertical align="center">
 					<UpOutlined />
 					<DownOutlined />
 				</Flex>
