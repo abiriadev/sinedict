@@ -9,6 +9,11 @@ const data: Array<ArticleData> = [
 		description: 'adfada',
 		example: 'adfa',
 	},
+	{
+		word: 'siba',
+		description: 'sine bye',
+		example: 'siba~',
+	},
 ]
 
 function App() {
