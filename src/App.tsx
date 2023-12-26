@@ -10,7 +10,11 @@ import {
 } from 'antd'
 import { ArticleData } from './interface'
 import { Article } from './Article'
-import { Content, Header } from 'antd/es/layout/layout'
+import {
+	Content,
+	Footer,
+	Header,
+} from 'antd/es/layout/layout'
 import {
 	GithubOutlined,
 	LogoutOutlined,
@@ -92,6 +96,7 @@ function App() {
 					Layout: {
 						headerBg: 'inherit',
 						bodyBg: 'inherit',
+						footerBg: 'inherit',
 					},
 					Typography: {
 						titleMarginBottom: 0,
@@ -155,6 +160,7 @@ function App() {
 						</Flex>
 					</Flex>
 				</Content>
+				<Footer className="h-40"></Footer>
 			</Layout>
 		</ConfigProvider>
 	)
