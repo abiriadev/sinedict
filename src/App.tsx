@@ -91,7 +91,7 @@ function App() {
 			}}
 		>
 			<Layout>
-				<Header className="sticky top-0">
+				<Header className="sticky top-0 backdrop-blur-md">
 					<Flex align="center" className="h-full">
 						<Typography.Title level={1}>
 							UpDict
