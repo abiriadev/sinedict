@@ -3,13 +3,13 @@ import {
 	ConfigProvider,
 	Flex,
 	Layout,
-	Space,
 	Typography,
 } from 'antd'
 import { ArticleData } from './interface'
 import { Article } from './Article'
 import { Content, Header } from 'antd/es/layout/layout'
 import { GithubOutlined } from '@ant-design/icons'
+import { FaDiscord } from 'react-icons/fa'
 
 const data: Array<ArticleData> = [
 	{
@@ -77,7 +77,7 @@ function App() {
 		<ConfigProvider
 			theme={{
 				token: {
-					fontSizeHeading1: 30,
+					fontSizeHeading1: 34,
 				},
 				components: {
 					Layout: {
@@ -101,11 +101,11 @@ function App() {
 						<Typography.Title level={1}>
 							UpDict
 						</Typography.Title>
-						<Flex gap="middle">
-							<GithubOutlined />
-							<GithubOutlined />
-							<GithubOutlined />
-							<GithubOutlined />
+						<Flex gap="large">
+							<GithubOutlined className="text-3xl" />
+							<GithubOutlined className="text-3xl" />
+							<GithubOutlined className="text-3xl" />
+							<FaDiscord className="text-3xl" />
 						</Flex>
 					</Flex>
 				</Header>
