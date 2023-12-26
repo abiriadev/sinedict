@@ -2,6 +2,7 @@ import { useState } from 'react'
 import {
 	Avatar,
 	ConfigProvider,
+	Dropdown,
 	Flex,
 	Layout,
 	Typography,
@@ -11,6 +12,7 @@ import { Article } from './Article'
 import { Content, Header } from 'antd/es/layout/layout'
 import {
 	GithubOutlined,
+	LogoutOutlined,
 	UserOutlined,
 } from '@ant-design/icons'
 import { FaDiscord } from 'react-icons/fa'
@@ -110,10 +112,25 @@ function App() {
 							<ImTwitch className="text-3xl" />
 							<FaDiscord className="text-3xl" />
 							<GithubOutlined className="text-3xl" />
-							<Avatar
-								className="text-3xl"
-								icon={<UserOutlined />}
-							/>
+							<Dropdown
+								menu={{
+									items: [
+										{
+											key: '1',
+											label: 'Sign out',
+											danger: true,
+											icon: (
+												<LogoutOutlined />
+											),
+										},
+									],
+								}}
+							>
+								<Avatar
+									className="text-3xl"
+									icon={<UserOutlined />}
+								/>
+							</Dropdown>
 						</Flex>
 					</Flex>
 				</Header>
