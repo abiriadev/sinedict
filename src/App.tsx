@@ -23,6 +23,7 @@ import {
 } from '@ant-design/icons'
 import { FaDiscord } from 'react-icons/fa'
 import { ImTwitch } from 'react-icons/im'
+import { NewArticle } from './NewArticle'
 
 const data: Array<ArticleData> = [
 	{
@@ -85,6 +86,7 @@ const data: Array<ArticleData> = [
 
 function App() {
 	const [articles, _] = useState(data)
+	const [isModalOpen, setIsModalOpen] = useState(false)
 
 	return (
 		<ConfigProvider
@@ -151,9 +153,21 @@ function App() {
 							<Button
 								icon={<PlusOutlined />}
 								type="dashed"
+								onClick={() =>
+									setIsModalOpen(true)
+								}
 							>
 								Add new
 							</Button>
+							<NewArticle
+								open={isModalOpen}
+								onOk={() =>
+									setIsModalOpen(false)
+								}
+								onCancel={() =>
+									setIsModalOpen(false)
+								}
+							/>
 							{articles.map(ad => (
 								<Article {...ad} />
 							))}
