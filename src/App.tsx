@@ -14,6 +14,7 @@ import {
 	UserOutlined,
 } from '@ant-design/icons'
 import { FaDiscord } from 'react-icons/fa'
+import { ImTwitch } from 'react-icons/im'
 
 const data: Array<ArticleData> = [
 	{
@@ -106,8 +107,9 @@ function App() {
 							UpDict
 						</Typography.Title>
 						<Flex gap="large">
-							<GithubOutlined className="text-3xl" />
+							<ImTwitch className="text-3xl" />
 							<FaDiscord className="text-3xl" />
+							<GithubOutlined className="text-3xl" />
 							<Avatar
 								className="text-3xl"
 								icon={<UserOutlined />}
