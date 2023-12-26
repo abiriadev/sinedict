@@ -1,4 +1,9 @@
-import { Button, Flex, Typography } from 'antd'
+import {
+	Button,
+	ConfigProvider,
+	Flex,
+	Typography,
+} from 'antd'
 import { ArticleData } from './interface'
 import {
 	UpOutlined,
@@ -34,7 +39,10 @@ export const Article = ({
 					gap="large"
 					className="mr-auto"
 				>
-					<Typography.Title level={3}>
+					<Typography.Title
+						level={3}
+						// className="my-0"
+					>
 						{word}
 					</Typography.Title>
 					<Flex

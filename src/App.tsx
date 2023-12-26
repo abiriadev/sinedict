@@ -91,18 +91,11 @@ function App() {
 	return (
 		<ConfigProvider
 			theme={{
-				token: {
-					fontSizeHeading1: 34,
-				},
 				components: {
 					Layout: {
 						headerBg: 'inherit',
 						bodyBg: 'inherit',
 						footerBg: 'inherit',
-					},
-					Typography: {
-						titleMarginBottom: 0,
-						titleMarginTop: 0,
 					},
 				},
 			}}
