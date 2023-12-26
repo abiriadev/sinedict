@@ -50,7 +50,7 @@ export const Article = ({
 						</Typography.Text>
 					</Flex>
 				</Flex>
-				<Flex vertical>
+				<Flex vertical gap="small">
 					<Button icon={<BarChartOutlined />} />
 					<Button icon={<EditOutlined />} />
 					<Button
