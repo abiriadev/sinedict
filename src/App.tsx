@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import {
 	Avatar,
+	Button,
 	ConfigProvider,
 	Dropdown,
 	Flex,
@@ -13,6 +14,7 @@ import { Content, Header } from 'antd/es/layout/layout'
 import {
 	GithubOutlined,
 	LogoutOutlined,
+	PlusOutlined,
 	UserOutlined,
 } from '@ant-design/icons'
 import { FaDiscord } from 'react-icons/fa'
@@ -141,6 +143,12 @@ function App() {
 							gap="large"
 							className="max-w-lg w-full"
 						>
+							<Button
+								icon={<PlusOutlined />}
+								type="dashed"
+							>
+								Add new
+							</Button>
 							{articles.map(ad => (
 								<Article {...ad} />
 							))}
