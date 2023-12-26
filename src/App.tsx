@@ -9,11 +9,15 @@ const data: Array<ArticleData> = [
 		word: 'asdf',
 		description: 'adfada',
 		example: 'adfa',
+		up: 10,
+		down: 2,
 	},
 	{
 		word: 'siba',
 		description: 'sine bye',
 		example: 'siba~',
+		up: 5,
+		down: 3,
 	},
 ]
 

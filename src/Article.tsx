@@ -1,4 +1,4 @@
-import { Flex, Statistic } from 'antd'
+import { Flex } from 'antd'
 import { ArticleData } from './interface'
 import { UpOutlined, DownOutlined } from '@ant-design/icons'
 
@@ -6,6 +6,8 @@ export const Article = ({
 	word,
 	description,
 	example,
+	up,
+	down,
 }: ArticleData) => {
 	return (
 		<div
@@ -15,9 +17,15 @@ export const Article = ({
 			}}
 		>
 			<Flex gap="small">
-				<Flex vertical align="center">
-					<UpOutlined />
-					<DownOutlined />
+				<Flex vertical align="center" gap="small">
+					<Flex vertical align="center">
+						<UpOutlined />
+						<span>{up}</span>
+					</Flex>
+					<Flex vertical align="center">
+						<span>{down}</span>
+						<DownOutlined />
+					</Flex>
 				</Flex>
 				<Flex vertical align="start" gap="large">
 					<h3
