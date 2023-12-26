@@ -9,6 +9,7 @@ import {
 import { ArticleData } from './interface'
 import { Article } from './Article'
 import { Content, Header } from 'antd/es/layout/layout'
+import { GithubOutlined } from '@ant-design/icons'
 
 const data: Array<ArticleData> = [
 	{
@@ -92,10 +93,20 @@ function App() {
 		>
 			<Layout>
 				<Header className="sticky top-0 backdrop-blur-md">
-					<Flex align="center" className="h-full">
+					<Flex
+						align="center"
+						justify="space-between"
+						className="h-full"
+					>
 						<Typography.Title level={1}>
 							UpDict
 						</Typography.Title>
+						<Flex gap="middle">
+							<GithubOutlined />
+							<GithubOutlined />
+							<GithubOutlined />
+							<GithubOutlined />
+						</Flex>
 					</Flex>
 				</Header>
 				<Content>
