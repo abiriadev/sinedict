@@ -39,10 +39,7 @@ export const Article = ({
 					gap="large"
 					className="mr-auto"
 				>
-					<Typography.Title
-						level={3}
-						// className="my-0"
-					>
+					<Typography.Title level={3}>
 						{word}
 					</Typography.Title>
 					<Flex
