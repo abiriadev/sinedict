@@ -1,11 +1,11 @@
 import { Flex } from 'antd'
-import { Article as ArticleProp } from './interface'
+import { ArticleData } from './interface'
 
 export const Article = ({
 	word,
 	description,
 	example,
-}: ArticleProp) => {
+}: ArticleData) => {
 	return (
 		<div>
 			<Flex>
