@@ -10,12 +10,7 @@ export const Article = ({
 	down,
 }: ArticleData) => {
 	return (
-		<div
-			style={{
-				backgroundColor: '#eee',
-				padding: 10,
-			}}
-		>
+		<div className="p-4 bg-neutral-100 rounded-lg shadow-md">
 			<Flex gap="small">
 				<Flex vertical align="center" gap="small">
 					<Flex vertical align="center">
@@ -28,32 +23,14 @@ export const Article = ({
 					</Flex>
 				</Flex>
 				<Flex vertical align="start" gap="large">
-					<h3
-						style={{
-							margin: 0,
-						}}
-					>
-						{word}
-					</h3>
+					<h3>{word}</h3>
 					<Flex
 						vertical
 						align="start"
 						gap="small"
 					>
-						<p
-							style={{
-								margin: 0,
-							}}
-						>
-							{description}
-						</p>
-						<p
-							style={{
-								margin: 0,
-							}}
-						>
-							{example}
-						</p>
+						<p>{description}</p>
+						<p>{example}</p>
 					</Flex>
 				</Flex>
 			</Flex>

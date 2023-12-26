@@ -36,12 +36,7 @@ function App() {
 			}}
 		>
 			<Layout>
-				<Header
-					style={{
-						position: 'sticky',
-						top: 0,
-					}}
-				>
+				<Header className="sticky top-0">
 					UpDict
 				</Header>
 				<Content>
@@ -49,10 +44,7 @@ function App() {
 						<Flex
 							vertical
 							gap="large"
-							style={{
-								width: '100%',
-								maxWidth: 500,
-							}}
+							className="max-w-lg w-full"
 						>
 							{articles.map(ad => (
 								<Article {...ad} />
