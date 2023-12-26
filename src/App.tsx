@@ -12,12 +12,12 @@ const data: Array<ArticleData> = [
 ]
 
 function App() {
-	const [count, setCount] = useState(0)
+	const [articles, _] = useState(data)
 
 	return (
 		<>
 			<Flex>
-				{data.map(ad => (
+				{articles.map(ad => (
 					<Article {...ad} />
 				))}
 			</Flex>
