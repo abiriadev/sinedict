@@ -7,6 +7,7 @@ import {
 	Flex,
 	Layout,
 	Typography,
+	theme,
 } from 'antd'
 import { ArticleData } from './interface'
 import { Article } from './Article'
@@ -24,6 +25,7 @@ import {
 import { FaDiscord } from 'react-icons/fa'
 import { ImTwitch } from 'react-icons/im'
 import { NewArticle } from './NewArticle'
+import { IconContext } from 'react-icons'
 
 const data: Array<ArticleData> = [
 	{
@@ -87,6 +89,7 @@ const data: Array<ArticleData> = [
 function App() {
 	const [articles, _] = useState(data)
 	const [isModalOpen, setIsModalOpen] = useState(false)
+	const { token } = theme.useToken()
 
 	return (
 		<ConfigProvider
@@ -110,30 +113,38 @@ function App() {
 						<Typography.Title level={1}>
 							UpDict
 						</Typography.Title>
-						<Flex gap="large">
-							<ImTwitch className="text-3xl" />
-							<FaDiscord className="text-3xl" />
-							<GithubOutlined className="text-3xl" />
-							<Dropdown
-								menu={{
-									items: [
-										{
-											key: '1',
-											label: 'Sign out',
-											danger: true,
-											icon: (
-												<LogoutOutlined />
-											),
-										},
-									],
-								}}
-							>
-								<Avatar
-									className="text-3xl"
-									icon={<UserOutlined />}
-								/>
-							</Dropdown>
-						</Flex>
+						<IconContext.Provider
+							value={{
+								color: token.colorPrimary,
+							}}
+						>
+							<Flex gap="large">
+								<ImTwitch className="text-3xl" />
+								<FaDiscord className="text-3xl" />
+								<GithubOutlined className="text-3xl" />
+								<Dropdown
+									menu={{
+										items: [
+											{
+												key: '1',
+												label: 'Sign out',
+												danger: true,
+												icon: (
+													<LogoutOutlined />
+												),
+											},
+										],
+									}}
+								>
+									<Avatar
+										className="text-3xl"
+										icon={
+											<UserOutlined />
+										}
+									/>
+								</Dropdown>
+							</Flex>
+						</IconContext.Provider>
 					</Flex>
 				</Header>
 				<Content>
