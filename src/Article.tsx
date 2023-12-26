@@ -4,6 +4,8 @@ import {
 	UpOutlined,
 	DownOutlined,
 	DeleteOutlined,
+	EditOutlined,
+	BarChartOutlined,
 } from '@ant-design/icons'
 
 export const Article = ({
@@ -43,7 +45,12 @@ export const Article = ({
 					</Flex>
 				</Flex>
 				<Flex vertical>
-					<Button icon={<DeleteOutlined />} />
+					<Button icon={<BarChartOutlined />} />
+					<Button icon={<EditOutlined />} />
+					<Button
+						icon={<DeleteOutlined />}
+						danger
+					/>
 				</Flex>
 			</Flex>
 		</div>
