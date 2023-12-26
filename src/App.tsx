@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import {
+	Avatar,
 	ConfigProvider,
 	Flex,
 	Layout,
@@ -8,7 +9,10 @@ import {
 import { ArticleData } from './interface'
 import { Article } from './Article'
 import { Content, Header } from 'antd/es/layout/layout'
-import { GithubOutlined } from '@ant-design/icons'
+import {
+	GithubOutlined,
+	UserOutlined,
+} from '@ant-design/icons'
 import { FaDiscord } from 'react-icons/fa'
 
 const data: Array<ArticleData> = [
@@ -103,9 +107,11 @@ function App() {
 						</Typography.Title>
 						<Flex gap="large">
 							<GithubOutlined className="text-3xl" />
-							<GithubOutlined className="text-3xl" />
-							<GithubOutlined className="text-3xl" />
 							<FaDiscord className="text-3xl" />
+							<Avatar
+								className="text-3xl"
+								icon={<UserOutlined />}
+							/>
 						</Flex>
 					</Flex>
 				</Header>
