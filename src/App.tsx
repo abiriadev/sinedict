@@ -118,10 +118,28 @@ function App() {
 								className: 'text-3xl',
 							}}
 						>
-							<Flex gap="large">
-								<ImTwitch />
-								<FaDiscord />
-								<FaGithub />
+							<Flex
+								gap="large"
+								align="center"
+							>
+								<a
+									href=""
+									className="leading-none"
+								>
+									<ImTwitch />
+								</a>
+								<a
+									href=""
+									className="leading-none"
+								>
+									<FaDiscord />
+								</a>
+								<a
+									href=""
+									className="leading-none"
+								>
+									<FaGithub />
+								</a>
 								<Dropdown
 									menu={{
 										items: [
