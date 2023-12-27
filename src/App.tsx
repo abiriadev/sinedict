@@ -143,11 +143,12 @@ function App() {
 								</Button>
 								<NewArticle
 									open={isModalOpen}
-									onOk={() =>
+									onOk={fields => (
+										console.log(fields),
 										setIsModalOpen(
 											false,
 										)
-									}
+									)}
 									onCancel={() =>
 										setIsModalOpen(
 											false,

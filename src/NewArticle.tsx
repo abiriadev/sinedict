@@ -28,10 +28,14 @@ export const NewArticle = ({
 					const v: FieldType =
 						await form.validateFields()
 
+					form.resetFields()
+
 					onOk(v)
 				} catch {}
 			}}
-			onCancel={onCancel}
+			onCancel={() => (
+				form.resetFields(), onCancel()
+			)}
 		>
 			<Form form={form} layout="vertical">
 				<Form.Item<FieldType>
