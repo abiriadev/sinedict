@@ -7,8 +7,10 @@ import {
 	EditOutlined,
 	BarChartOutlined,
 } from '@ant-design/icons'
+import { deleteArticle } from './api'
 
 export const Article = ({
+	id,
 	word,
 	description,
 	example,
@@ -56,6 +58,7 @@ export const Article = ({
 					<Button
 						icon={<DeleteOutlined />}
 						danger
+						onClick={() => deleteArticle(id)}
 					/>
 				</Flex>
 			</Flex>
