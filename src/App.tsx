@@ -96,7 +96,10 @@ function App() {
 									}
 								/>
 								{articles.map(ad => (
-									<Article {...ad} />
+									<Article
+										key={1}
+										{...ad}
+									/>
 								))}
 							</Flex>
 						) : (
