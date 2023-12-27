@@ -43,15 +43,15 @@ export const upVote = async (id: Id): Promise<void> => {
 		.from('articles')
 		.select('up')
 		.eq('id', id)
+		.single()
 
 	if (error) throw error
 	if (data === null) throw 'not found'
-	if (data.length !== 1) throw 'too less or much'
 
 	const { error: error2 } = await supabase
 		.from('articles')
 		.update({
-			up: data[0].up + 1,
+			up: data.up + 1,
 		})
 		.eq('id', id)
 
