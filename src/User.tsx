@@ -19,7 +19,7 @@ export const User = () => {
 				setUser(null)
 			}
 		})()
-	})
+	}, [])
 
 	return (
 		<Dropdown
@@ -49,17 +49,22 @@ export const User = () => {
 				onClick: ({ key }) =>
 					key === 'sign in'
 						? signIn()
-						: signOut(),
+						: signOut().then(() =>
+								setUser(null),
+						  ),
 			}}
 		>
-			<Avatar
-				className="text-3xl bg-primary"
-				{...(user
-					? user.user_metadata.avatar_url
-					: {
-							icon: <UserOutlined />,
-					  })}
-			/>
+			{user ? (
+				<Avatar
+					className="text-3xl"
+					src={user.user_metadata.avatar_url}
+				/>
+			) : (
+				<Avatar
+					className="text-3xl bg-primary"
+					icon={<UserOutlined />}
+				/>
+			)}
 		</Dropdown>
 	)
 }
