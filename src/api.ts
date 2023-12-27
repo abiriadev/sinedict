@@ -62,11 +62,23 @@ export const upVote = async (id: Id): Promise<void> => {
 }
 
 export const signIn = async () => {
-	const { data, error } =
-		await supabase.auth.signInWithOAuth({
-			provider: 'discord',
-		})
+	const { error } = await supabase.auth.signInWithOAuth({
+		provider: 'discord',
+	})
 
-	console.log(data)
-	console.error(error)
+	if (error) throw error
+}
+
+export const whoAmI = async () => {
+	const {
+		data: { session },
+		error,
+	} = await supabase.auth.getSession()
+
+	if (error) throw error
+	if (session === null) throw 'session is not detected'
+
+	const user = session.user
+
+	return user
 }
