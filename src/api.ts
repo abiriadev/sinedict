@@ -60,3 +60,13 @@ export const upVote = async (id: Id): Promise<void> => {
 
 	if (error2) throw error2
 }
+
+export const signIn = async () => {
+	const { data, error } =
+		await supabase.auth.signInWithOAuth({
+			provider: 'discord',
+		})
+
+	console.log(data)
+	console.error(error)
+}
