@@ -1,4 +1,4 @@
-import { Avatar, Button, Dropdown } from 'antd'
+import { Avatar, Button, Dropdown, Typography } from 'antd'
 import { signIn, signOut, whoAmI } from './api'
 import {
 	LoginOutlined,
@@ -27,35 +27,29 @@ export const User = () => {
 				items: [
 					user
 						? {
-								key: '1',
+								key: 'sign out',
 								label: (
-									<Button
-										type="text"
-										onClick={() =>
-											signOut()
-										}
-									>
+									<Typography.Text>
 										Sign out
-									</Button>
+									</Typography.Text>
 								),
 								danger: true,
 								icon: <LogoutOutlined />,
 						  }
 						: {
-								key: '1',
+								key: 'sign in',
 								label: (
-									<Button
-										type="text"
-										onClick={() =>
-											signIn()
-										}
-									>
+									<Typography.Text>
 										Sign in
-									</Button>
+									</Typography.Text>
 								),
 								icon: <LoginOutlined />,
 						  },
 				],
+				onClick: ({ key }) =>
+					key === 'sign in'
+						? signIn()
+						: signOut(),
 			}}
 		>
 			<Avatar
