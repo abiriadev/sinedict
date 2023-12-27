@@ -1,6 +1,7 @@
 import { Avatar, Button, Dropdown } from 'antd'
 import { signIn, whoAmI } from './api'
 import {
+	LoginOutlined,
 	LogoutOutlined,
 	UserOutlined,
 } from '@ant-design/icons'
@@ -20,19 +21,36 @@ export const User = () => {
 		<Dropdown
 			menu={{
 				items: [
-					{
-						key: '1',
-						label: (
-							<Button
-								type="text"
-								onClick={() => signIn()}
-							>
-								Sign out
-							</Button>
-						),
-						danger: true,
-						icon: <LogoutOutlined />,
-					},
+					user
+						? {
+								key: '1',
+								label: (
+									<Button
+										type="text"
+										onClick={() =>
+											signIn()
+										}
+									>
+										Sign out
+									</Button>
+								),
+								danger: true,
+								icon: <LogoutOutlined />,
+						  }
+						: {
+								key: '1',
+								label: (
+									<Button
+										type="text"
+										onClick={() =>
+											signIn()
+										}
+									>
+										Sign in
+									</Button>
+								),
+								icon: <LoginOutlined />,
+						  },
 				],
 			}}
 		>
