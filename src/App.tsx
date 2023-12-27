@@ -9,7 +9,6 @@ import {
 } from 'antd'
 import { ArticleData } from './interface'
 import { Article } from './Article'
-import { Content, Footer } from 'antd/es/layout/layout'
 import { PlusOutlined } from '@ant-design/icons'
 import { NewArticle } from './NewArticle'
 import { AppBar } from './AppBar'
@@ -54,7 +53,7 @@ function App() {
 		>
 			<Layout className="h-full">
 				<AppBar />
-				<Content>
+				<Layout.Content>
 					<Flex
 						justify="center"
 						className="h-full"
@@ -124,8 +123,8 @@ function App() {
 							</Flex>
 						)}
 					</Flex>
-				</Content>
-				<Footer className="h-40"></Footer>
+				</Layout.Content>
+				<Layout.Footer className="h-40"></Layout.Footer>
 			</Layout>
 		</ConfigProvider>
 	)

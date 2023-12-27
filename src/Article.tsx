@@ -1,9 +1,4 @@
-import {
-	Button,
-	ConfigProvider,
-	Flex,
-	Typography,
-} from 'antd'
+import { Button, Flex, Typography } from 'antd'
 import { ArticleData } from './interface'
 import {
 	UpOutlined,

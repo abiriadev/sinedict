@@ -6,10 +6,10 @@ import {
 	Avatar,
 	Dropdown,
 	Flex,
+	Layout,
 	Typography,
 	theme,
 } from 'antd'
-import { Header } from 'antd/es/layout/layout'
 import { IconContext } from 'react-icons'
 import { FaDiscord, FaGithub } from 'react-icons/fa'
 import { ImTwitch } from 'react-icons/im'
@@ -18,7 +18,7 @@ export const AppBar = () => {
 	const { token } = theme.useToken()
 
 	return (
-		<Header className="sticky top-0 z-10 backdrop-blur-md">
+		<Layout.Header className="sticky top-0 z-10 backdrop-blur-md">
 			<Flex
 				align="center"
 				justify="space-between"
@@ -65,6 +65,6 @@ export const AppBar = () => {
 					</Flex>
 				</IconContext.Provider>
 			</Flex>
-		</Header>
+		</Layout.Header>
 	)
 }
