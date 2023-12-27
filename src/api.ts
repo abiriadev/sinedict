@@ -1,4 +1,4 @@
-import { ArticleData } from './interface'
+import { ArticleData, ArticleForm } from './interface'
 import { supabase } from './supabase'
 
 // failable
@@ -12,4 +12,15 @@ export const fetchAll = async (): Promise<
 	if (error) throw error
 
 	return data
+}
+
+// failable
+export const postArticle = async (
+	form: ArticleForm,
+): Promise<void> => {
+	const { error } = await supabase
+		.from('articles')
+		.insert(form)
+
+	if (error) throw error
 }
