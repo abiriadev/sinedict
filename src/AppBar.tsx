@@ -1,18 +1,8 @@
-import {
-	LogoutOutlined,
-	UserOutlined,
-} from '@ant-design/icons'
-import {
-	Avatar,
-	Dropdown,
-	Flex,
-	Layout,
-	Typography,
-	theme,
-} from 'antd'
+import { Flex, Layout, Typography, theme } from 'antd'
 import { IconContext } from 'react-icons'
 import { FaDiscord, FaGithub } from 'react-icons/fa'
 import { ImTwitch } from 'react-icons/im'
+import { User } from './User'
 
 export const AppBar = () => {
 	const { token } = theme.useToken()
@@ -43,25 +33,7 @@ export const AppBar = () => {
 						<a href="" className="leading-none">
 							<FaGithub />
 						</a>
-						<Dropdown
-							menu={{
-								items: [
-									{
-										key: '1',
-										label: 'Sign out',
-										danger: true,
-										icon: (
-											<LogoutOutlined />
-										),
-									},
-								],
-							}}
-						>
-							<Avatar
-								className="text-3xl"
-								icon={<UserOutlined />}
-							/>
-						</Dropdown>
+						<User />
 					</Flex>
 				</IconContext.Provider>
 			</Flex>
