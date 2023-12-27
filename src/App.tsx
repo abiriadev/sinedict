@@ -6,6 +6,7 @@ import { Content, Footer } from 'antd/es/layout/layout'
 import { PlusOutlined } from '@ant-design/icons'
 import { NewArticle } from './NewArticle'
 import { AppBar } from './AppBar'
+import { supabase } from './supabase'
 
 const data: Array<ArticleData> = [
 	{
@@ -73,7 +74,20 @@ function App() {
 	const [isModalOpen, setIsModalOpen] = useState(false)
 
 	useEffect(
-		() => void (async () => setArticles(data))(),
+		() =>
+			void (async () => {
+				try {
+					const { data, error } = await supabase
+						.from('articles')
+						.select()
+
+					if (error) throw error
+
+					setArticles(data)
+				} catch (err) {
+					console.error(err)
+				}
+			})(),
 		[],
 	)
 
