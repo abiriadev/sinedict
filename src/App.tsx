@@ -14,8 +14,12 @@ import { NewArticle } from './NewArticle'
 import { AppBar } from './AppBar'
 import { fetchAll } from './api'
 
+// I need Rust enum. fuck typescript.
+type ArticlesStatus = 'loading' | 'success' | 'fail'
+
 function App() {
-	const [isLoading, setIsLoading] = useState(true)
+	const [articlesStatus, setArticlesStatus] =
+		useState<ArticlesStatus>('loading')
 	const [articles, setArticles] = useState<
 		Array<ArticleData>
 	>([])
@@ -26,9 +30,10 @@ function App() {
 			void (async () => {
 				try {
 					setArticles(await fetchAll())
-					setIsLoading(false)
+					setArticlesStatus('success')
 				} catch (err) {
 					console.error(err)
+					setArticlesStatus('fail')
 				}
 			})(),
 		[],
@@ -53,7 +58,7 @@ function App() {
 						justify="center"
 						className="h-full"
 					>
-						{isLoading ? (
+						{articlesStatus === 'loading' ? (
 							<Flex
 								vertical
 								justify="center"
@@ -61,7 +66,7 @@ function App() {
 							>
 								<Spin size="large" />
 							</Flex>
-						) : (
+						) : articlesStatus === 'success' ? (
 							<Flex
 								vertical
 								gap="large"
@@ -94,6 +99,8 @@ function App() {
 									<Article {...ad} />
 								))}
 							</Flex>
+						) : (
+							<>Failed.</>
 						)}
 					</Flex>
 				</Content>
