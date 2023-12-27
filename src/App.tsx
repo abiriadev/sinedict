@@ -12,7 +12,7 @@ import { Content, Footer } from 'antd/es/layout/layout'
 import { PlusOutlined } from '@ant-design/icons'
 import { NewArticle } from './NewArticle'
 import { AppBar } from './AppBar'
-import { supabase } from './supabase'
+import { fetchAll } from './api'
 
 const data: Array<ArticleData> = [
 	{
@@ -84,13 +84,7 @@ function App() {
 		() =>
 			void (async () => {
 				try {
-					const { data, error } = await supabase
-						.from('articles')
-						.select()
-
-					if (error) throw error
-
-					setArticles(data)
+					setArticles(await fetchAll())
 					setIsLoading(false)
 				} catch (err) {
 					console.error(err)

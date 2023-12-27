@@ -1,8 +1,15 @@
-import { Article } from './interface'
+import { ArticleData } from './interface'
+import { supabase } from './supabase'
 
+// failable
 export const fetchAll = async (): Promise<
-	Array<Article>
+	Array<ArticleData>
 > => {
-	// todo!()
-	return []
+	const { data, error } = await supabase
+		.from('articles')
+		.select()
+
+	if (error) throw error
+
+	return data
 }
