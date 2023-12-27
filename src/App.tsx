@@ -1,5 +1,11 @@
 import { useEffect, useState } from 'react'
-import { Button, ConfigProvider, Flex, Layout } from 'antd'
+import {
+	Button,
+	ConfigProvider,
+	Flex,
+	Layout,
+	Spin,
+} from 'antd'
 import { ArticleData } from './interface'
 import { Article } from './Article'
 import { Content, Footer } from 'antd/es/layout/layout'
@@ -68,6 +74,7 @@ const data: Array<ArticleData> = [
 ]
 
 function App() {
+	const [isLoading, setIsLoading] = useState(true)
 	const [articles, setArticles] = useState<
 		Array<ArticleData>
 	>([])
@@ -84,6 +91,7 @@ function App() {
 					if (error) throw error
 
 					setArticles(data)
+					setIsLoading(false)
 				} catch (err) {
 					console.error(err)
 				}
@@ -107,33 +115,41 @@ function App() {
 				<AppBar />
 				<Content>
 					<Flex justify="center">
-						<Flex
-							vertical
-							gap="large"
-							className="max-w-lg w-full"
-						>
-							<Button
-								icon={<PlusOutlined />}
-								type="dashed"
-								onClick={() =>
-									setIsModalOpen(true)
-								}
+						{isLoading ? (
+							<Spin />
+						) : (
+							<Flex
+								vertical
+								gap="large"
+								className="max-w-lg w-full"
 							>
-								Add new
-							</Button>
-							<NewArticle
-								open={isModalOpen}
-								onOk={() =>
-									setIsModalOpen(false)
-								}
-								onCancel={() =>
-									setIsModalOpen(false)
-								}
-							/>
-							{articles.map(ad => (
-								<Article {...ad} />
-							))}
-						</Flex>
+								<Button
+									icon={<PlusOutlined />}
+									type="dashed"
+									onClick={() =>
+										setIsModalOpen(true)
+									}
+								>
+									Add new
+								</Button>
+								<NewArticle
+									open={isModalOpen}
+									onOk={() =>
+										setIsModalOpen(
+											false,
+										)
+									}
+									onCancel={() =>
+										setIsModalOpen(
+											false,
+										)
+									}
+								/>
+								{articles.map(ad => (
+									<Article {...ad} />
+								))}
+							</Flex>
+						)}
 					</Flex>
 				</Content>
 				<Footer className="h-40"></Footer>
