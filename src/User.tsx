@@ -59,19 +59,12 @@ export const User = () => {
 			}}
 		>
 			<Avatar
-				className="text-3xl"
-				icon={
-					user ? (
-						<img
-							src={
-								user.user_metadata
-									.avatar_url
-							}
-						/>
-					) : (
-						<UserOutlined />
-					)
-				}
+				className="text-3xl bg-primary"
+				{...(user
+					? user.user_metadata.avatar_url
+					: {
+							icon: <UserOutlined />,
+					  })}
 			/>
 		</Dropdown>
 	)
