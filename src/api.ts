@@ -82,3 +82,11 @@ export const whoAmI = async () => {
 
 	return user
 }
+
+export const signOut = async () => {
+	const { error } = await supabase.auth.signOut({
+		scope: 'global',
+	})
+
+	if (error) throw error
+}
