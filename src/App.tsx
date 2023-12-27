@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Button, ConfigProvider, Flex, Layout } from 'antd'
 import { ArticleData } from './interface'
 import { Article } from './Article'
@@ -67,8 +67,15 @@ const data: Array<ArticleData> = [
 ]
 
 function App() {
-	const [articles, _] = useState(data)
+	const [articles, setArticles] = useState<
+		Array<ArticleData>
+	>([])
 	const [isModalOpen, setIsModalOpen] = useState(false)
+
+	useEffect(
+		() => void (async () => setArticles(data))(),
+		[],
+	)
 
 	return (
 		<ConfigProvider
