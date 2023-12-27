@@ -8,6 +8,9 @@ export const fetchAll = async (): Promise<
 	const { data, error } = await supabase
 		.from('articles')
 		.select()
+		.order('up', {
+			ascending: false,
+		})
 
 	if (error) throw error
 
