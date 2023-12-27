@@ -7,7 +7,7 @@ import {
 	EditOutlined,
 	BarChartOutlined,
 } from '@ant-design/icons'
-import { deleteArticle } from './api'
+import { deleteArticle, upVote } from './api'
 
 export const Article = ({
 	id,
@@ -23,7 +23,14 @@ export const Article = ({
 			<Flex gap="middle">
 				<Flex vertical align="center" gap="middle">
 					<Flex vertical align="center">
-						<UpOutlined />
+						<UpOutlined
+							onClick={async () => {
+								try {
+									await upVote(id)
+									refresh()
+								} catch {}
+							}}
+						/>
 						<span>{up}</span>
 					</Flex>
 					<Flex vertical align="center">
@@ -59,9 +66,9 @@ export const Article = ({
 					<Button
 						icon={<DeleteOutlined />}
 						danger
-						onClick={() => {
+						onClick={async () => {
 							try {
-								deleteArticle(id)
+								await deleteArticle(id)
 
 								refresh()
 							} catch {}
