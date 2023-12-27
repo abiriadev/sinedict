@@ -36,3 +36,24 @@ export const deleteArticle = async (
 
 	if (error) throw error
 }
+
+// failable
+export const upVote = async (id: Id): Promise<void> => {
+	const { data, error } = await supabase
+		.from('articles')
+		.select('up')
+		.eq('id', id)
+
+	if (error) throw error
+	if (data === null) throw 'not found'
+	if (data.length !== 1) throw 'too less or much'
+
+	const { error: error2 } = await supabase
+		.from('articles')
+		.update({
+			up: data[0].up + 1,
+		})
+		.eq('id', id)
+
+	if (error2) throw error2
+}
