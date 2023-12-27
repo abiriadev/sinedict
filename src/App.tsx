@@ -97,7 +97,7 @@ function App() {
 								/>
 								{articles.map(ad => (
 									<Article
-										key={1}
+										key={ad.id}
 										{...ad}
 									/>
 								))}

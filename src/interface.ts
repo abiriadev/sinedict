@@ -9,3 +9,9 @@ export interface ArticleData {
 	up: number
 	down: number
 }
+
+export interface ArticleForm {
+	word: string
+	description: string
+	example: string
+}
