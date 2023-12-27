@@ -62,7 +62,12 @@ export const NewArticle = ({
 						},
 					]}
 				>
-					<Input />
+					<Input.TextArea
+						autoSize={{
+							minRows: 3,
+							maxRows: 10,
+						}}
+					/>
 				</Form.Item>
 				<Form.Item<FieldType>
 					name="example"
@@ -75,7 +80,12 @@ export const NewArticle = ({
 						},
 					]}
 				>
-					<Input />
+					<Input.TextArea
+						autoSize={{
+							minRows: 2,
+							maxRows: 6,
+						}}
+					/>
 				</Form.Item>
 			</Form>
 		</Modal>
