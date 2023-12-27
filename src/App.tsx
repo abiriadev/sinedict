@@ -4,6 +4,7 @@ import {
 	ConfigProvider,
 	Flex,
 	Layout,
+	Result,
 	Spin,
 } from 'antd'
 import { ArticleData } from './interface'
@@ -100,7 +101,27 @@ function App() {
 								))}
 							</Flex>
 						) : (
-							<>Failed.</>
+							<Flex
+								vertical
+								justify="center"
+								className="h-full"
+							>
+								<Result
+									status="error"
+									title="Failed to fetch data"
+									subTitle="Seems like the backend doesn't work or was crashed."
+									extra={[
+										<Button type="primary">
+											Open an issue on
+											GitHub
+										</Button>,
+										<Button>
+											Contact
+											developer
+										</Button>,
+									]}
+								></Result>
+							</Flex>
 						)}
 					</Flex>
 				</Content>
