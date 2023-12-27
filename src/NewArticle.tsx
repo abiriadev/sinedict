@@ -2,7 +2,7 @@ import { Form, Input, Modal } from 'antd'
 
 export interface NewArticleProps {
 	open: boolean
-	onOk: () => void
+	onOk: (fields: FieldType) => void
 	onCancel: () => void
 }
 
@@ -12,11 +12,30 @@ export interface FieldType {
 	example: string
 }
 
-export const NewArticle = (props: NewArticleProps) => {
+export const NewArticle = ({
+	open,
+	onOk,
+	onCancel,
+}: NewArticleProps) => {
+	const [form] = Form.useForm()
+
 	return (
-		<Modal title="New article" {...props}>
-			<Form layout="vertical">
+		<Modal
+			title="New article"
+			open={open}
+			onOk={async () => {
+				try {
+					const v: FieldType =
+						await form.validateFields()
+
+					onOk(v)
+				} catch {}
+			}}
+			onCancel={onCancel}
+		>
+			<Form form={form} layout="vertical">
 				<Form.Item<FieldType>
+					name="word"
 					label="Word"
 					rules={[
 						{
@@ -29,6 +48,7 @@ export const NewArticle = (props: NewArticleProps) => {
 					<Input />
 				</Form.Item>
 				<Form.Item<FieldType>
+					name="description"
 					label="Description"
 					rules={[
 						{
@@ -41,6 +61,7 @@ export const NewArticle = (props: NewArticleProps) => {
 					<Input />
 				</Form.Item>
 				<Form.Item<FieldType>
+					name="example"
 					label="Example"
 					rules={[
 						{
