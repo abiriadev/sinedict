@@ -1,5 +1,5 @@
 import { Avatar, Button, Dropdown } from 'antd'
-import { signIn, whoAmI } from './api'
+import { signIn, signOut, whoAmI } from './api'
 import {
 	LoginOutlined,
 	LogoutOutlined,
@@ -13,7 +13,11 @@ export const User = () => {
 
 	useEffect(() => {
 		;(async () => {
-			setUser(await whoAmI())
+			try {
+				setUser(await whoAmI())
+			} catch {
+				setUser(null)
+			}
 		})()
 	})
 
@@ -28,7 +32,7 @@ export const User = () => {
 									<Button
 										type="text"
 										onClick={() =>
-											signIn()
+											signOut()
 										}
 									>
 										Sign out
