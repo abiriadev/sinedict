@@ -14,65 +14,6 @@ import { NewArticle } from './NewArticle'
 import { AppBar } from './AppBar'
 import { fetchAll } from './api'
 
-const data: Array<ArticleData> = [
-	{
-		word: 'asdf',
-		description: 'adfada',
-		example: 'adfa',
-		up: 10,
-		down: 2,
-	},
-	{
-		word: 'siba',
-		description: 'sine bye',
-		example: 'siba~',
-		up: 5,
-		down: 3,
-	},
-	{
-		word: 'asdf',
-		description: 'adfada',
-		example: 'adfa',
-		up: 10,
-		down: 2,
-	},
-	{
-		word: 'siba',
-		description: 'sine bye',
-		example: 'siba~',
-		up: 5,
-		down: 3,
-	},
-	{
-		word: 'asdf',
-		description: 'adfada',
-		example: 'adfa',
-		up: 10,
-		down: 2,
-	},
-	{
-		word: 'siba',
-		description: 'sine bye',
-		example: 'siba~',
-		up: 5,
-		down: 3,
-	},
-	{
-		word: 'asdf',
-		description: 'adfada',
-		example: 'adfa',
-		up: 10,
-		down: 2,
-	},
-	{
-		word: 'siba',
-		description: 'sine bye',
-		example: 'siba~',
-		up: 5,
-		down: 3,
-	},
-]
-
 function App() {
 	const [isLoading, setIsLoading] = useState(true)
 	const [articles, setArticles] = useState<
