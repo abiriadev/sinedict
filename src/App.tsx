@@ -25,19 +25,17 @@ function App() {
 	>([])
 	const [isModalOpen, setIsModalOpen] = useState(false)
 
-	useEffect(
-		() =>
-			void (async () => {
-				try {
-					setArticles(await fetchAll())
-					setArticlesStatus('success')
-				} catch (err) {
-					console.error(err)
-					setArticlesStatus('fail')
-				}
-			})(),
-		[],
-	)
+	const refresh = async () => {
+		try {
+			setArticles(await fetchAll())
+			setArticlesStatus('success')
+		} catch (err) {
+			console.error(err)
+			setArticlesStatus('fail')
+		}
+	}
+
+	useEffect(() => void refresh(), [])
 
 	return (
 		<ConfigProvider
@@ -90,6 +88,7 @@ function App() {
 										setIsModalOpen(
 											false,
 										)
+										refresh()
 									}}
 									onCancel={() =>
 										setIsModalOpen(
