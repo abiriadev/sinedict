@@ -16,7 +16,8 @@ export const Article = ({
 	example,
 	up,
 	down,
-}: ArticleData) => {
+	refresh,
+}: ArticleData & { refresh: () => Promise<void> }) => {
 	return (
 		<div className="p-4 bg-neutral-50 rounded-lg shadow-sm shadow-primary border border-primary">
 			<Flex gap="middle">
@@ -58,7 +59,13 @@ export const Article = ({
 					<Button
 						icon={<DeleteOutlined />}
 						danger
-						onClick={() => deleteArticle(id)}
+						onClick={() => {
+							try {
+								deleteArticle(id)
+
+								refresh()
+							} catch {}
+						}}
 					/>
 				</Flex>
 			</Flex>

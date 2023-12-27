@@ -100,6 +100,7 @@ function App() {
 									<Article
 										key={ad.id}
 										{...ad}
+										refresh={refresh}
 									/>
 								))}
 							</Flex>
