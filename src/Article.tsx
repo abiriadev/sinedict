@@ -16,7 +16,7 @@ export const Article = ({
 	down,
 }: ArticleData) => {
 	return (
-		<div className="p-4 bg-neutral-100 rounded-lg shadow-md">
+		<div className="p-4 bg-neutral-100 rounded-lg shadow-sm shadow-primary border border-primary">
 			<Flex gap="middle">
 				<Flex vertical align="center" gap="middle">
 					<Flex vertical align="center">
