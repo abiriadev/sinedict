@@ -12,7 +12,7 @@ import { Article } from './Article'
 import { PlusOutlined } from '@ant-design/icons'
 import { NewArticle } from './NewArticle'
 import { AppBar } from './AppBar'
-import { fetchAll } from './api'
+import { fetchAll, postArticle } from './api'
 
 // I need Rust enum. fuck typescript.
 type ArticlesStatus = 'loading' | 'success' | 'fail'
@@ -83,12 +83,14 @@ function App() {
 								</Button>
 								<NewArticle
 									open={isModalOpen}
-									onOk={fields => (
-										console.log(fields),
+									onOk={async fields => {
+										await postArticle(
+											fields,
+										)
 										setIsModalOpen(
 											false,
 										)
-									)}
+									}}
 									onCancel={() =>
 										setIsModalOpen(
 											false,
