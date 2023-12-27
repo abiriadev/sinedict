@@ -111,12 +111,21 @@ function App() {
 				},
 			}}
 		>
-			<Layout>
+			<Layout className="h-full">
 				<AppBar />
 				<Content>
-					<Flex justify="center">
+					<Flex
+						justify="center"
+						className="h-full"
+					>
 						{isLoading ? (
-							<Spin />
+							<Flex
+								vertical
+								justify="center"
+								className="h-full"
+							>
+								<Spin size="large" />
+							</Flex>
 						) : (
 							<Flex
 								vertical
