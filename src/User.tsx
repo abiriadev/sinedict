@@ -51,7 +51,7 @@ export const User = ({
 				onClick: ({ key }) =>
 					key === 'sign in'
 						? signIn()
-						: key === 'sing out'
+						: key === 'sign out'
 						? signOut().then(() =>
 								setUser(null),
 						  )
