@@ -108,7 +108,20 @@ export interface Database {
 			[_ in never]: never
 		}
 		Functions: {
-			[_ in never]: never
+			fetch_articles: {
+				Args: Record<PropertyKey, never>
+				Returns: {
+					id: string
+					created_at: string
+					author: string
+					word: string
+					description: string
+					example: string
+					votes: number
+					upvotes: number
+					downvotes: number
+				}[]
+			}
 		}
 		Enums: {
 			[_ in never]: never
