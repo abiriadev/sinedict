@@ -11,6 +11,7 @@ export interface Database {
 		Tables: {
 			articles: {
 				Row: {
+					author: string | null
 					created_at: string
 					description: string
 					down: number
@@ -20,6 +21,7 @@ export interface Database {
 					word: string
 				}
 				Insert: {
+					author?: string | null
 					created_at?: string
 					description: string
 					down?: number
@@ -29,6 +31,7 @@ export interface Database {
 					word: string
 				}
 				Update: {
+					author?: string | null
 					created_at?: string
 					description?: string
 					down?: number
@@ -37,7 +40,15 @@ export interface Database {
 					up?: number
 					word?: string
 				}
-				Relationships: []
+				Relationships: [
+					{
+						foreignKeyName: 'articles_author_fkey'
+						columns: ['author']
+						isOneToOne: false
+						referencedRelation: 'users'
+						referencedColumns: ['id']
+					},
+				]
 			}
 		}
 		Views: {

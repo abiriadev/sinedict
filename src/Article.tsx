@@ -71,7 +71,9 @@ export const Article = ({
 								await deleteArticle(id)
 
 								refresh()
-							} catch {}
+							} catch (err) {
+								console.error(err)
+							}
 						}}
 					/>
 				</Flex>

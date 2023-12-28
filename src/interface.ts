@@ -3,6 +3,7 @@ export type Id = string
 
 export interface ArticleData {
 	id: Id
+	author: Id
 	word: string
 	description: string
 	example: string
