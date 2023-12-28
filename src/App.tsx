@@ -6,6 +6,7 @@ import {
 	Layout,
 	Result,
 	Spin,
+	message,
 } from 'antd'
 import { ArticleData, UserData } from './interface'
 import { Article } from './Article'
@@ -25,6 +26,7 @@ function App() {
 	>([])
 	const [isModalOpen, setIsModalOpen] = useState(false)
 	const [user, setUser] = useState<UserData | null>(null)
+	const [msg, ctxHolder] = message.useMessage()
 
 	const refresh = async () => {
 		try {
@@ -50,6 +52,7 @@ function App() {
 				},
 			}}
 		>
+			{ctxHolder}
 			<Layout className="h-full">
 				<AppBar user={user} setUser={setUser} />
 				<Layout.Content>
@@ -83,13 +86,23 @@ function App() {
 								<NewArticle
 									open={isModalOpen}
 									onOk={async fields => {
-										await postArticle(
-											fields,
-										)
-										setIsModalOpen(
-											false,
-										)
-										refresh()
+										try {
+											await postArticle(
+												fields,
+											)
+											setIsModalOpen(
+												false,
+											)
+											refresh()
+										} catch (err) {
+											msg.error(
+												`failed to create new article: ${JSON.stringify(
+													err,
+													null,
+													2,
+												)}`,
+											)
+										}
 									}}
 									onCancel={() =>
 										setIsModalOpen(
