@@ -1,5 +1,5 @@
 import { Button, Flex, Typography } from 'antd'
-import { ArticleData } from './interface'
+import { ArticleData, Id } from './interface'
 import {
 	UpOutlined,
 	DownOutlined,
@@ -9,16 +9,26 @@ import {
 } from '@ant-design/icons'
 import { deleteArticle, upVote } from './api'
 
+export interface ArticleProp {
+	id: Id
+	isMyArticle: boolean
+	word: string
+	description: string
+	example: string
+	up: number
+	down: number
+}
+
 export const Article = ({
 	id,
-	author,
+	isMyArticle,
 	word,
 	description,
 	example,
 	up,
 	down,
 	refresh,
-}: ArticleData & { refresh: () => Promise<void> }) => {
+}: ArticleProp & { refresh: () => Promise<void> }) => {
 	return (
 		<div className="p-4 bg-neutral-50 rounded-lg shadow-sm shadow-primary border border-primary">
 			<Flex gap="middle">
