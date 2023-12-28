@@ -119,3 +119,13 @@ export const downVote = (article: Id, user: Id) =>
 		user,
 		value: -1,
 	})
+
+export const unVote = async (article: Id, user: Id) => {
+	const { error } = await supabase
+		.from('votes')
+		.delete()
+		.eq('article', article)
+		.eq('user', user)
+
+	if (error) throw error
+}
