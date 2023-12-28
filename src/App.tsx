@@ -94,8 +94,17 @@ function App() {
 									open={isModalOpen}
 									onOk={async fields => {
 										try {
+											if (
+												currentUser ===
+												null
+											)
+												throw 'should login first before creating new article'
+
 											await postArticle(
-												fields,
+												{
+													...fields,
+													author: currentUser.id,
+												},
 											)
 											setIsModalOpen(
 												false,

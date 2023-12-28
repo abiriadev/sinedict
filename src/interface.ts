@@ -18,6 +18,7 @@ export interface ArticleData {
 }
 
 export interface ArticleForm {
+	author: Id
 	word: string
 	description: string
 	example: string

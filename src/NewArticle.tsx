@@ -1,10 +1,15 @@
 import { Form, Input, Modal } from 'antd'
-import { ArticleForm } from './interface'
 
 export interface NewArticleProps {
 	open: boolean
-	onOk: (fields: ArticleForm) => void
+	onOk: (fields: NewArticleForm) => void
 	onCancel: () => void
+}
+
+export interface NewArticleForm {
+	word: string
+	description: string
+	example: string
 }
 
 export const NewArticle = ({
@@ -20,7 +25,7 @@ export const NewArticle = ({
 			open={open}
 			onOk={async () => {
 				try {
-					const v: ArticleForm =
+					const v: NewArticleForm =
 						await form.validateFields()
 
 					form.resetFields()
@@ -33,7 +38,7 @@ export const NewArticle = ({
 			)}
 		>
 			<Form form={form} layout="vertical">
-				<Form.Item<ArticleForm>
+				<Form.Item<NewArticleForm>
 					name="word"
 					label="Word"
 					rules={[
@@ -46,7 +51,7 @@ export const NewArticle = ({
 				>
 					<Input />
 				</Form.Item>
-				<Form.Item<ArticleForm>
+				<Form.Item<NewArticleForm>
 					name="description"
 					label="Description"
 					rules={[
@@ -64,7 +69,7 @@ export const NewArticle = ({
 						}}
 					/>
 				</Form.Item>
-				<Form.Item<ArticleForm>
+				<Form.Item<NewArticleForm>
 					name="example"
 					label="Example"
 					rules={[
