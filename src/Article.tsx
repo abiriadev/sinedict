@@ -10,10 +10,12 @@ import {
 import { deleteArticle, upVote } from './api'
 import { Statistics } from './Statistics'
 import { useState } from 'react'
+import { useAtomValue } from 'jotai'
+import { currentUserAtom } from './states'
 
 export interface ArticleProp {
 	id: Id
-	isMyArticle: boolean
+	author: Id | null
 	word: string
 	description: string
 	example: string
@@ -23,7 +25,7 @@ export interface ArticleProp {
 
 export const Article = ({
 	id,
-	isMyArticle,
+	author,
 	word,
 	description,
 	example,
@@ -31,6 +33,7 @@ export const Article = ({
 	down,
 	refresh,
 }: ArticleProp & { refresh: () => Promise<void> }) => {
+	const currentUser = useAtomValue(currentUserAtom)
 	const [isStatisticsOpen, setIsStatisticsOpen] =
 		useState(false)
 
@@ -84,7 +87,8 @@ export const Article = ({
 						}
 					/>
 					<Button icon={<EditOutlined />} />
-					{isMyArticle ? (
+					{author !== null &&
+					author === currentUser?.id ? (
 						<Button
 							icon={<DeleteOutlined />}
 							danger
@@ -102,6 +106,7 @@ export const Article = ({
 				</Flex>
 			</Flex>
 			<Statistics
+				authorId={author}
 				open={isStatisticsOpen}
 				setOpen={setIsStatisticsOpen}
 			/>

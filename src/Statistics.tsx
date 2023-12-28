@@ -19,13 +19,16 @@ export const Statistics = ({
 		null,
 	)
 
-	useEffect(
-		() =>
-			void (async () => {
-				// fetchUser(authorId)
-			})(),
-		[],
-	)
+	useEffect(() => {
+		if (!open || authorId === null) return
+		;(async () => {
+			try {
+				setAuthor(await fetchUser(authorId))
+			} catch (err) {
+				console.error(err)
+			}
+		})()
+	}, [open])
 
 	return (
 		<Modal

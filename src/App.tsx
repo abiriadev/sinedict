@@ -142,12 +142,7 @@ function App() {
 										<Article
 											key={id}
 											id={id}
-											isMyArticle={
-												author !==
-													null &&
-												author ===
-													currentUser?.id
-											}
+											author={author}
 											word={word}
 											description={
 												description
