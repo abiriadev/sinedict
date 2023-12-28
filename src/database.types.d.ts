@@ -50,6 +50,32 @@ export interface Database {
 					},
 				]
 			}
+			users: {
+				Row: {
+					avatar: string
+					id: string
+					name: string
+				}
+				Insert: {
+					avatar: string
+					id: string
+					name: string
+				}
+				Update: {
+					avatar?: string
+					id?: string
+					name?: string
+				}
+				Relationships: [
+					{
+						foreignKeyName: 'users_id_fkey'
+						columns: ['id']
+						isOneToOne: true
+						referencedRelation: 'users'
+						referencedColumns: ['id']
+					},
+				]
+			}
 		}
 		Views: {
 			[_ in never]: never
