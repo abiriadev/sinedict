@@ -5,12 +5,16 @@ import {
 	LogoutOutlined,
 	UserOutlined,
 } from '@ant-design/icons'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { UserData } from './interface'
 
-export const User = () => {
-	const [user, setUser] = useState<UserData | null>(null)
-
+export const User = ({
+	user,
+	setUser,
+}: {
+	user: UserData | null
+	setUser: (user: UserData | null) => void
+}) => {
 	useEffect(() => {
 		;(async () => {
 			try {

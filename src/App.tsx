@@ -7,7 +7,7 @@ import {
 	Result,
 	Spin,
 } from 'antd'
-import { ArticleData } from './interface'
+import { ArticleData, UserData } from './interface'
 import { Article } from './Article'
 import { PlusOutlined } from '@ant-design/icons'
 import { NewArticle } from './NewArticle'
@@ -24,6 +24,7 @@ function App() {
 		Array<ArticleData>
 	>([])
 	const [isModalOpen, setIsModalOpen] = useState(false)
+	const [user, setUser] = useState<UserData | null>(null)
 
 	const refresh = async () => {
 		try {
@@ -50,7 +51,7 @@ function App() {
 			}}
 		>
 			<Layout className="h-full">
-				<AppBar />
+				<AppBar user={user} setUser={setUser} />
 				<Layout.Content>
 					<Flex
 						justify="center"
