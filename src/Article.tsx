@@ -1,5 +1,5 @@
 import { Button, Flex, Typography } from 'antd'
-import { ArticleData, Id } from './interface'
+import { Id } from './interface'
 import {
 	UpOutlined,
 	DownOutlined,
@@ -101,7 +101,10 @@ export const Article = ({
 					) : null}
 				</Flex>
 			</Flex>
-			<Statistics open={isStatisticsOpen} />
+			<Statistics
+				open={isStatisticsOpen}
+				setOpen={setIsStatisticsOpen}
+			/>
 		</div>
 	)
 }

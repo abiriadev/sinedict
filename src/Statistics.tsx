@@ -1,5 +1,20 @@
 import { Modal } from 'antd'
 
-export const Statistics = ({ open }: { open: boolean }) => {
-	return <Modal title="asdf" open={open}></Modal>
+export interface StatisticsProp {
+	open: boolean
+	setOpen: (open: boolean) => void
+}
+
+export const Statistics = ({
+	open,
+	setOpen,
+}: StatisticsProp) => {
+	return (
+		<Modal
+			title="Statistics"
+			open={open}
+			onCancel={() => setOpen(false)}
+			footer={() => <></>}
+		></Modal>
+	)
 }
