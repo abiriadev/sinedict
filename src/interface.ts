@@ -3,7 +3,7 @@ export type Id = string
 
 export interface ArticleData {
 	id: Id
-	author: Id
+	author: Id | null
 	word: string
 	description: string
 	example: string
