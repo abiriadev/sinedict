@@ -7,7 +7,7 @@ import {
 	EditOutlined,
 	BarChartOutlined,
 } from '@ant-design/icons'
-import { deleteArticle, upVote } from './api'
+import { deleteArticle, downVote, upVote } from './api'
 import { Statistics } from './Statistics'
 import { useState } from 'react'
 import { useAtomValue } from 'jotai'
@@ -64,7 +64,24 @@ export const Article = ({
 					</Flex>
 					<Flex vertical align="center">
 						<span>{down}</span>
-						<DownOutlined />
+						<DownOutlined
+							onClick={async () => {
+								if (currentUser === null) {
+									console.log(
+										'login first',
+									)
+									return
+								}
+
+								try {
+									await downVote(
+										id,
+										currentUser.id,
+									)
+									refresh()
+								} catch {}
+							}}
+						/>
 					</Flex>
 				</Flex>
 				<Flex
