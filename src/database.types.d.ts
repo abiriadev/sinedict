@@ -14,30 +14,24 @@ export interface Database {
 					author: string | null
 					created_at: string
 					description: string
-					down: number
 					example: string
 					id: string
-					up: number
 					word: string
 				}
 				Insert: {
 					author?: string | null
 					created_at?: string
 					description: string
-					down?: number
 					example: string
 					id?: string
-					up?: number
 					word: string
 				}
 				Update: {
 					author?: string | null
 					created_at?: string
 					description?: string
-					down?: number
 					example?: string
 					id?: string
-					up?: number
 					word?: string
 				}
 				Relationships: [

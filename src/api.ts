@@ -20,7 +20,7 @@ export const fetchAll = async (): Promise<
 
 	if (error) throw error
 
-	return data
+	return data.map(d => ({ ...d, up: 0, down: 0 }))
 }
 
 // failable
