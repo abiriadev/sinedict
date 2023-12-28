@@ -8,7 +8,7 @@ import {
 	Spin,
 	message,
 } from 'antd'
-import { ArticleData, UserData } from './interface'
+import { ArticleData } from './interface'
 import { Article } from './Article'
 import { PlusOutlined } from '@ant-design/icons'
 import { NewArticle } from './NewArticle'
@@ -26,7 +26,8 @@ function App() {
 	const [articles, setArticles] = useState<
 		Array<ArticleData>
 	>([])
-	const [isModalOpen, setIsModalOpen] = useState(false)
+	const [isNewArticleOpen, setIsNewArticleOpen] =
+		useState(false)
 	const currentUser = useAtomValue(currentUserAtom)
 	const [msg, ctxHolder] = message.useMessage()
 
@@ -85,13 +86,15 @@ function App() {
 											: 'invisible'
 									}
 									onClick={() =>
-										setIsModalOpen(true)
+										setIsNewArticleOpen(
+											true,
+										)
 									}
 								>
 									Add new
 								</Button>
 								<NewArticle
-									open={isModalOpen}
+									open={isNewArticleOpen}
 									onOk={async fields => {
 										try {
 											if (
@@ -106,7 +109,7 @@ function App() {
 													author: currentUser.id,
 												},
 											)
-											setIsModalOpen(
+											setIsNewArticleOpen(
 												false,
 											)
 											refresh()
@@ -121,7 +124,7 @@ function App() {
 										}
 									}}
 									onCancel={() =>
-										setIsModalOpen(
+										setIsNewArticleOpen(
 											false,
 										)
 									}

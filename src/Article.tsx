@@ -8,6 +8,8 @@ import {
 	BarChartOutlined,
 } from '@ant-design/icons'
 import { deleteArticle, upVote } from './api'
+import { Statistics } from './Statistics'
+import { useState } from 'react'
 
 export interface ArticleProp {
 	id: Id
@@ -29,6 +31,9 @@ export const Article = ({
 	down,
 	refresh,
 }: ArticleProp & { refresh: () => Promise<void> }) => {
+	const [isStatisticsOpen, setIsStatisticsOpen] =
+		useState(false)
+
 	return (
 		<div className="p-4 bg-neutral-50 rounded-lg shadow-sm shadow-primary border border-primary">
 			<Flex gap="middle">
@@ -72,7 +77,12 @@ export const Article = ({
 					</Flex>
 				</Flex>
 				<Flex vertical gap="small">
-					<Button icon={<BarChartOutlined />} />
+					<Button
+						icon={<BarChartOutlined />}
+						onClick={() =>
+							setIsStatisticsOpen(true)
+						}
+					/>
 					<Button icon={<EditOutlined />} />
 					{isMyArticle ? (
 						<Button
@@ -91,6 +101,7 @@ export const Article = ({
 					) : null}
 				</Flex>
 			</Flex>
+			<Statistics open={isStatisticsOpen} />
 		</div>
 	)
 }
