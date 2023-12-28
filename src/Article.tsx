@@ -11,6 +11,7 @@ import { deleteArticle, upVote } from './api'
 
 export const Article = ({
 	id,
+	author,
 	word,
 	description,
 	example,

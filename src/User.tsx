@@ -1,4 +1,4 @@
-import { Avatar, Button, Dropdown, Typography } from 'antd'
+import { Avatar, Dropdown, Typography } from 'antd'
 import { signIn, signOut, whoAmI } from './api'
 import {
 	LoginOutlined,
@@ -10,6 +10,8 @@ import { User as SbUser } from '@supabase/supabase-js'
 
 export const User = () => {
 	const [user, setUser] = useState<SbUser | null>(null)
+
+	console.log(user)
 
 	useEffect(() => {
 		;(async () => {
