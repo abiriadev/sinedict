@@ -1,15 +1,32 @@
 import { UserOutlined } from '@ant-design/icons'
 import { Avatar, Modal, Typography } from 'antd'
+import { useEffect, useState } from 'react'
+import { Id, UserData } from './interface'
+import { fetchUser } from './api'
 
 export interface StatisticsProp {
+	authorId: Id | null
 	open: boolean
 	setOpen: (open: boolean) => void
 }
 
 export const Statistics = ({
+	authorId,
 	open,
 	setOpen,
 }: StatisticsProp) => {
+	const [author, setAuthor] = useState<UserData | null>(
+		null,
+	)
+
+	useEffect(
+		() =>
+			void (async () => {
+				// fetchUser(authorId)
+			})(),
+		[],
+	)
+
 	return (
 		<Modal
 			title="Statistics"
@@ -21,7 +38,9 @@ export const Statistics = ({
 				Author
 			</Typography.Title>
 			<Avatar icon={<UserOutlined />} />
-			<Typography.Text>Username</Typography.Text>
+			<Typography.Text>
+				{author?.name ?? 'author'}
+			</Typography.Text>
 		</Modal>
 	)
 }
