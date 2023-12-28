@@ -76,6 +76,39 @@ export interface Database {
 					},
 				]
 			}
+			votes: {
+				Row: {
+					article: string
+					user: string
+					value: number
+				}
+				Insert: {
+					article: string
+					user: string
+					value: number
+				}
+				Update: {
+					article?: string
+					user?: string
+					value?: number
+				}
+				Relationships: [
+					{
+						foreignKeyName: 'votes_article_fkey'
+						columns: ['article']
+						isOneToOne: false
+						referencedRelation: 'articles'
+						referencedColumns: ['id']
+					},
+					{
+						foreignKeyName: 'votes_user_fkey'
+						columns: ['user']
+						isOneToOne: false
+						referencedRelation: 'users'
+						referencedColumns: ['id']
+					},
+				]
+			}
 		}
 		Views: {
 			[_ in never]: never
