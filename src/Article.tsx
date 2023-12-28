@@ -74,19 +74,21 @@ export const Article = ({
 				<Flex vertical gap="small">
 					<Button icon={<BarChartOutlined />} />
 					<Button icon={<EditOutlined />} />
-					<Button
-						icon={<DeleteOutlined />}
-						danger
-						onClick={async () => {
-							try {
-								await deleteArticle(id)
+					{isMyArticle ? (
+						<Button
+							icon={<DeleteOutlined />}
+							danger
+							onClick={async () => {
+								try {
+									await deleteArticle(id)
 
-								refresh()
-							} catch (err) {
-								console.error(err)
-							}
-						}}
-					/>
+									refresh()
+								} catch (err) {
+									console.error(err)
+								}
+							}}
+						/>
+					) : null}
 				</Flex>
 			</Flex>
 		</div>
