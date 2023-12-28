@@ -1,5 +1,5 @@
 import { UserOutlined } from '@ant-design/icons'
-import { Avatar, Modal, Typography } from 'antd'
+import { Avatar, Modal, Typography, message } from 'antd'
 import { useEffect, useState } from 'react'
 import { Id, UserData } from './interface'
 import { fetchUser } from './api'
@@ -18,6 +18,7 @@ export const Statistics = ({
 	const [author, setAuthor] = useState<UserData | null>(
 		null,
 	)
+	const [msg, ctxHolder] = message.useMessage()
 
 	useEffect(() => {
 		if (!open || authorId === null) return
@@ -25,7 +26,13 @@ export const Statistics = ({
 			try {
 				setAuthor(await fetchUser(authorId))
 			} catch (err) {
-				console.error(err)
+				msg.error(
+					`failed to fetch user data: ${JSON.stringify(
+						err,
+						null,
+						2,
+					)}`,
+				)
 			}
 		})()
 	}, [open])
@@ -37,6 +44,7 @@ export const Statistics = ({
 			onCancel={() => setOpen(false)}
 			footer={() => <></>}
 		>
+			{ctxHolder}
 			<Typography.Title level={3}>
 				Author
 			</Typography.Title>
