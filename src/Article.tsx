@@ -44,8 +44,18 @@ export const Article = ({
 					<Flex vertical align="center">
 						<UpOutlined
 							onClick={async () => {
+								if (currentUser === null) {
+									console.log(
+										'login first',
+									)
+									return
+								}
+
 								try {
-									await upVote(id)
+									await upVote(
+										id,
+										currentUser.id,
+									)
 									refresh()
 								} catch {}
 							}}
