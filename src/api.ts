@@ -3,6 +3,7 @@ import {
 	ArticleForm,
 	Id,
 	UserData,
+	VoteForm,
 } from './interface'
 import { supabase } from './supabase'
 
@@ -43,27 +44,6 @@ export const deleteArticle = async (
 		.eq('id', id)
 
 	if (error) throw error
-}
-
-// failable
-export const upVote = async (id: Id): Promise<void> => {
-	const { data, error } = await supabase
-		.from('articles')
-		.select('up')
-		.eq('id', id)
-		.single()
-
-	if (error) throw error
-	if (data === null) throw 'not found'
-
-	const { error: error2 } = await supabase
-		.from('articles')
-		.update({
-			up: data.up + 1,
-		})
-		.eq('id', id)
-
-	if (error2) throw error2
 }
 
 export const signIn = async () => {
@@ -117,3 +97,25 @@ export const fetchUser = async (id: Id) => {
 
 	return data
 }
+
+const vote = async (vote: VoteForm) => {
+	const { error } = await supabase
+		.from('votes')
+		.upsert(vote)
+
+	if (error) throw error
+}
+
+export const upVote = (article: Id, user: Id) =>
+	vote({
+		article,
+		user,
+		value: 1,
+	})
+
+export const downVote = (article: Id, user: Id) =>
+	vote({
+		article,
+		user,
+		value: -1,
+	})
