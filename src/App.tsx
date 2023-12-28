@@ -97,13 +97,40 @@ function App() {
 										)
 									}
 								/>
-								{articles.map(ad => (
-									<Article
-										key={ad.id}
-										{...ad}
-										refresh={refresh}
-									/>
-								))}
+								{articles.map(
+									({
+										id,
+										author,
+										word,
+										description,
+										example,
+										up,
+										down,
+									}) => (
+										<Article
+											key={id}
+											id={id}
+											isMyArticle={
+												author !==
+													null &&
+												author ===
+													user?.id
+											}
+											word={word}
+											description={
+												description
+											}
+											example={
+												example
+											}
+											up={up}
+											down={down}
+											refresh={
+												refresh
+											}
+										/>
+									),
+								)}
 							</Flex>
 						) : (
 							<Flex
