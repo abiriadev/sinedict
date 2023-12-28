@@ -79,6 +79,11 @@ function App() {
 								<Button
 									icon={<PlusOutlined />}
 									type="dashed"
+									className={
+										currentUser
+											? ''
+											: 'invisible'
+									}
 									onClick={() =>
 										setIsModalOpen(true)
 									}
