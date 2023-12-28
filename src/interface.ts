@@ -23,3 +23,11 @@ export interface ArticleForm {
 	description: string
 	example: string
 }
+
+export type VoteValue = -1 | 1
+
+export interface VoteForm {
+	user: Id
+	article: Id
+	value: VoteValue
+}
