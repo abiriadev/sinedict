@@ -1,4 +1,4 @@
-import { Avatar, Dropdown, Typography } from 'antd'
+import { Avatar, Dropdown } from 'antd'
 import { signIn, signOut, whoAmI } from './api'
 import {
 	LoginOutlined,
@@ -6,21 +6,19 @@ import {
 	UserOutlined,
 } from '@ant-design/icons'
 import { useEffect } from 'react'
-import { UserData } from './interface'
+import { useAtom } from 'jotai'
+import { currentUserAtom } from './states'
 
-export const User = ({
-	user,
-	setUser,
-}: {
-	user: UserData | null
-	setUser: (user: UserData | null) => void
-}) => {
+export const User = () => {
+	const [currentUser, setCurrentUser] =
+		useAtom(currentUserAtom)
+
 	useEffect(() => {
 		;(async () => {
 			try {
-				setUser(await whoAmI())
+				setCurrentUser(await whoAmI())
 			} catch {
-				setUser(null)
+				setCurrentUser(null)
 			}
 		})()
 	}, [])
@@ -28,11 +26,11 @@ export const User = ({
 	return (
 		<Dropdown
 			menu={{
-				items: user
+				items: currentUser
 					? [
 							{
 								key: 'name',
-								label: user.name,
+								label: currentUser.name,
 							},
 							{
 								key: 'sign out',
@@ -53,15 +51,15 @@ export const User = ({
 						? signIn()
 						: key === 'sign out'
 						? signOut().then(() =>
-								setUser(null),
+								setCurrentUser(null),
 						  )
 						: void 0,
 			}}
 		>
-			{user ? (
+			{currentUser ? (
 				<Avatar
 					className="text-3xl"
-					src={user.avatar}
+					src={currentUser.avatar}
 				/>
 			) : (
 				<Avatar

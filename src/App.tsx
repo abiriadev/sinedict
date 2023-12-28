@@ -14,6 +14,8 @@ import { PlusOutlined } from '@ant-design/icons'
 import { NewArticle } from './NewArticle'
 import { AppBar } from './AppBar'
 import { fetchAll, postArticle } from './api'
+import { useAtomValue } from 'jotai'
+import { currentUserAtom } from './states'
 
 // I need Rust enum. fuck typescript.
 type ArticlesStatus = 'loading' | 'success' | 'fail'
@@ -25,7 +27,7 @@ function App() {
 		Array<ArticleData>
 	>([])
 	const [isModalOpen, setIsModalOpen] = useState(false)
-	const [user, setUser] = useState<UserData | null>(null)
+	const currentUser = useAtomValue(currentUserAtom)
 	const [msg, ctxHolder] = message.useMessage()
 
 	const refresh = async () => {
@@ -54,7 +56,7 @@ function App() {
 		>
 			{ctxHolder}
 			<Layout className="h-full">
-				<AppBar user={user} setUser={setUser} />
+				<AppBar />
 				<Layout.Content>
 					<Flex
 						justify="center"
@@ -127,7 +129,7 @@ function App() {
 												author !==
 													null &&
 												author ===
-													user?.id
+													currentUser?.id
 											}
 											word={word}
 											description={

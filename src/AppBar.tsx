@@ -3,15 +3,8 @@ import { IconContext } from 'react-icons'
 import { FaDiscord, FaGithub } from 'react-icons/fa'
 import { ImTwitch } from 'react-icons/im'
 import { User } from './User'
-import { UserData } from './interface'
 
-export const AppBar = ({
-	user,
-	setUser,
-}: {
-	user: UserData | null
-	setUser: (user: UserData | null) => void
-}) => {
+export const AppBar = () => {
 	const { token } = theme.useToken()
 
 	return (
@@ -40,7 +33,7 @@ export const AppBar = ({
 						<a href="" className="leading-none">
 							<FaGithub />
 						</a>
-						<User user={user} setUser={setUser} />
+						<User />
 					</Flex>
 				</IconContext.Provider>
 			</Flex>
