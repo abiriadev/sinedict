@@ -1,4 +1,9 @@
-import { ArticleData, ArticleForm, Id } from './interface'
+import {
+	ArticleData,
+	ArticleForm,
+	Id,
+	UserData,
+} from './interface'
 import { supabase } from './supabase'
 
 // failable
@@ -69,7 +74,7 @@ export const signIn = async () => {
 	if (error) throw error
 }
 
-export const whoAmI = async () => {
+export const whoAmI = async (): Promise<UserData> => {
 	const {
 		data: { session },
 		error,
@@ -78,9 +83,18 @@ export const whoAmI = async () => {
 	if (error) throw error
 	if (session === null) throw 'session is not detected'
 
-	const user = session.user
+	const { id, user_metadata } = session.user
 
-	return user
+	if (user_metadata.avatar_url === undefined)
+		throw 'avatar_url is not defined'
+	if (user_metadata.full_name === undefined)
+		throw 'full_name is not defined'
+
+	return {
+		id,
+		name: user_metadata.full_name,
+		avatar: user_metadata.avatar_url,
+	}
 }
 
 export const signOut = async () => {

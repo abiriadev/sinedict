@@ -6,12 +6,10 @@ import {
 	UserOutlined,
 } from '@ant-design/icons'
 import { useEffect, useState } from 'react'
-import { User as SbUser } from '@supabase/supabase-js'
+import { UserData } from './interface'
 
 export const User = () => {
-	const [user, setUser] = useState<SbUser | null>(null)
-
-	console.log(user)
+	const [user, setUser] = useState<UserData | null>(null)
 
 	useEffect(() => {
 		;(async () => {
@@ -59,7 +57,7 @@ export const User = () => {
 			{user ? (
 				<Avatar
 					className="text-3xl"
-					src={user.user_metadata.avatar_url}
+					src={user.avatar}
 				/>
 			) : (
 				<Avatar
