@@ -24,34 +24,34 @@ export const User = () => {
 	return (
 		<Dropdown
 			menu={{
-				items: [
-					user
-						? {
+				items: user
+					? [
+							{
+								key: 'name',
+								label: user.name,
+							},
+							{
 								key: 'sign out',
-								label: (
-									<Typography.Text>
-										Sign out
-									</Typography.Text>
-								),
+								label: 'Sign out',
 								danger: true,
 								icon: <LogoutOutlined />,
-						  }
-						: {
+							},
+					  ]
+					: [
+							{
 								key: 'sign in',
-								label: (
-									<Typography.Text>
-										Sign in
-									</Typography.Text>
-								),
+								label: 'Sign in',
 								icon: <LoginOutlined />,
-						  },
-				],
+							},
+					  ],
 				onClick: ({ key }) =>
 					key === 'sign in'
 						? signIn()
-						: signOut().then(() =>
+						: key === 'sing out'
+						? signOut().then(() =>
 								setUser(null),
-						  ),
+						  )
+						: void 0,
 			}}
 		>
 			{user ? (
