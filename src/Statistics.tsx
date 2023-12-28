@@ -48,7 +48,11 @@ export const Statistics = ({
 			<Typography.Title level={3}>
 				Author
 			</Typography.Title>
-			<Avatar icon={<UserOutlined />} />
+			{author ? (
+				<Avatar src={author.avatar} />
+			) : (
+				<Avatar icon={<UserOutlined />} />
+			)}
 			<Typography.Text>
 				{author?.name ?? 'author'}
 			</Typography.Text>
