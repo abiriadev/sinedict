@@ -104,3 +104,24 @@ export const signOut = async () => {
 
 	if (error) throw error
 }
+
+export const fetchUser = async (id: Id) => {
+	const { data, error } =
+		await supabase.auth.admin.getUserById(id)
+
+	if (error) throw error
+	if (data === null) throw 'user does not exist'
+
+	const { id: iid, user_metadata } = data.user
+
+	if (user_metadata.avatar_url === undefined)
+		throw 'avatar_url is not defined'
+	if (user_metadata.full_name === undefined)
+		throw 'full_name is not defined'
+
+	return {
+		id: iid,
+		name: user_metadata.full_name,
+		avatar: user_metadata.avatar_url,
+	}
+}
