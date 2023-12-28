@@ -118,8 +118,8 @@ export interface Database {
 					description: string
 					example: string
 					votes: number
-					upvotes: number
-					downvotes: number
+					up: number
+					down: number
 				}[]
 			}
 		}
