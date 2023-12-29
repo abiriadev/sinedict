@@ -14,6 +14,8 @@ import { fetchUser, fetchVoters } from './api'
 export interface StatisticsProp {
 	article: Id
 	authorId: Id | null
+	up: number
+	down: number
 	open: boolean
 	setOpen: (open: boolean) => void
 }
@@ -21,6 +23,8 @@ export interface StatisticsProp {
 export const Statistics = ({
 	article,
 	authorId,
+	up,
+	down,
 	open,
 	setOpen,
 }: StatisticsProp) => {
@@ -88,19 +92,28 @@ export const Statistics = ({
 				Voters
 			</Typography.Title>
 			<Avatar.Group>
-				{voters ? (
-					voters.map(
-						({
-							user: { id, name, avatar },
-						}) => (
-							<Tooltip key={id} title={name}>
-								<Avatar src={avatar} />
-							</Tooltip>
-						),
-					)
-				) : (
-					<Skeleton.Avatar active />
-				)}
+				{voters
+					? voters.map(
+							({
+								user: { id, name, avatar },
+							}) => (
+								<Tooltip
+									key={id}
+									title={name}
+								>
+									<Avatar src={avatar} />
+								</Tooltip>
+							),
+					  )
+					: Array.from(
+							{ length: up + down },
+							(_, i) => (
+								<Skeleton.Avatar
+									key={i}
+									active
+								/>
+							),
+					  )}
 			</Avatar.Group>
 		</Modal>
 	)

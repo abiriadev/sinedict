@@ -97,6 +97,8 @@ export const Article = ({
 			<Statistics
 				article={id}
 				authorId={author}
+				up={up}
+				down={down}
 				open={isStatisticsOpen}
 				setOpen={setIsStatisticsOpen}
 			/>
