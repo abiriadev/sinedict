@@ -79,8 +79,8 @@ export const Article = ({
 					{/* <Button icon={<EditOutlined />} /> */}
 					{ismine && (
 						<Popconfirm
-							title="Delete the article"
-							description="Are you sure to delete this article?"
+							title="시네어 삭제하기"
+							description="이 시네어를 삭제하시겠습니까?"
 							onConfirm={async () => {
 								try {
 									await deleteArticle(id)
