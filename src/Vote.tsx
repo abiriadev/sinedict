@@ -1,7 +1,7 @@
 import { DownOutlined, UpOutlined } from '@ant-design/icons'
 import { Flex } from 'antd'
 import { Id, VoteValue } from './interface'
-import { downVote, upVote } from './api'
+import { downVote, unVote, upVote } from './api'
 import { useAtomValue } from 'jotai'
 import { currentUserAtom } from './states'
 
@@ -37,7 +37,9 @@ export const Vote = ({
 						}
 
 						try {
-							await upVote(
+							await (value === 1
+								? unVote
+								: upVote)(
 								article,
 								currentUser.id,
 							)
@@ -62,7 +64,9 @@ export const Vote = ({
 						}
 
 						try {
-							await downVote(
+							await (value === -1
+								? unVote
+								: downVote)(
 								article,
 								currentUser.id,
 							)

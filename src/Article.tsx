@@ -8,7 +8,7 @@ import {
 import { deleteArticle } from './api'
 import { Statistics } from './Statistics'
 import { useState } from 'react'
-import { Vote } from './Vote.1'
+import { Vote } from './Vote'
 
 export interface ArticleProp {
 	id: Id
