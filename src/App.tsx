@@ -80,16 +80,27 @@ function App() {
 								<Button
 									icon={<PlusOutlined />}
 									type="dashed"
-									className={
-										currentUser
-											? ''
-											: 'invisible'
-									}
-									onClick={() =>
+									// className={
+									// 	currentUser
+									// 		? ''
+									// 		: 'invisible'
+									// }
+									onClick={() => {
+										if (
+											currentUser ===
+											null
+										) {
+											msg.info(
+												'먼저 로그인해 주세요!',
+											)
+
+											return
+										}
+
 										setIsNewArticleOpen(
 											true,
 										)
-									}
+									}}
 								>
 									새 시네어 추가하기
 								</Button>
