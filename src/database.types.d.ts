@@ -110,7 +110,7 @@ export interface Database {
 		Functions: {
 			fetch_articles: {
 				Args: {
-					userid: string
+					userid?: string
 				}
 				Returns: {
 					id: string
