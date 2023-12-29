@@ -17,7 +17,7 @@ export interface ArticleData {
 	votes: number
 	up: number
 	down: number
-	myvote: number
+	myvote: VoteValue | null
 }
 
 export interface ArticleForm {
