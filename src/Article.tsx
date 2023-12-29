@@ -1,5 +1,5 @@
 import { Button, Flex, Typography } from 'antd'
-import { Id } from './interface'
+import { Id, VoteValue } from './interface'
 import {
 	UpOutlined,
 	DownOutlined,
@@ -16,21 +16,25 @@ import { currentUserAtom } from './states'
 export interface ArticleProp {
 	id: Id
 	author: Id | null
+	ismine: boolean
 	word: string
 	description: string
 	example: string
 	up: number
 	down: number
+	myvote: VoteValue | null
 }
 
 export const Article = ({
 	id,
 	author,
+	ismine,
 	word,
 	description,
 	example,
 	up,
 	down,
+	myvote,
 	refresh,
 }: ArticleProp & { refresh: () => Promise<void> }) => {
 	const currentUser = useAtomValue(currentUserAtom)
@@ -43,6 +47,11 @@ export const Article = ({
 				<Flex vertical align="center" gap="middle">
 					<Flex vertical align="center">
 						<UpOutlined
+							className={
+								myvote === 1
+									? 'stroke-primary stroke-[75px]'
+									: 'stroke-current stroke-[20px] '
+							}
 							onClick={async () => {
 								if (currentUser === null) {
 									console.log(
@@ -65,6 +74,11 @@ export const Article = ({
 					<Flex vertical align="center">
 						<span>{down}</span>
 						<DownOutlined
+							className={
+								myvote === -1
+									? 'stroke-primary stroke-[75px]'
+									: 'stroke-current stroke-[20px] '
+							}
 							onClick={async () => {
 								if (currentUser === null) {
 									console.log(
@@ -114,8 +128,7 @@ export const Article = ({
 						}
 					/>
 					<Button icon={<EditOutlined />} />
-					{author !== null &&
-					author === currentUser?.id ? (
+					{ismine && (
 						<Button
 							icon={<DeleteOutlined />}
 							danger
@@ -129,7 +142,7 @@ export const Article = ({
 								}
 							}}
 						/>
-					) : null}
+					)}
 				</Flex>
 			</Flex>
 			<Statistics

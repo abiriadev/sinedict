@@ -33,7 +33,7 @@ function App() {
 
 	const refresh = async () => {
 		try {
-			setArticles(await fetchAll())
+			setArticles(await fetchAll(currentUser?.id))
 			setArticlesStatus('success')
 		} catch (err) {
 			console.error(err)
@@ -41,7 +41,7 @@ function App() {
 		}
 	}
 
-	useEffect(() => void refresh(), [])
+	useEffect(() => void refresh(), [currentUser])
 
 	return (
 		<ConfigProvider
@@ -133,16 +133,19 @@ function App() {
 									({
 										id,
 										author,
+										ismine,
 										word,
 										description,
 										example,
 										up,
 										down,
+										myvote,
 									}) => (
 										<Article
 											key={id}
 											id={id}
 											author={author}
+											ismine={ismine}
 											word={word}
 											description={
 												description
@@ -152,6 +155,7 @@ function App() {
 											}
 											up={up}
 											down={down}
+											myvote={myvote}
 											refresh={
 												refresh
 											}
