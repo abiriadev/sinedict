@@ -1,4 +1,4 @@
-import { Button, Flex, Typography } from 'antd'
+import { Button, Flex, Popconfirm, Typography } from 'antd'
 import { Id, VoteValue } from './interface'
 import {
 	DeleteOutlined,
@@ -78,10 +78,10 @@ export const Article = ({
 					/>
 					{/* <Button icon={<EditOutlined />} /> */}
 					{ismine && (
-						<Button
-							icon={<DeleteOutlined />}
-							danger
-							onClick={async () => {
+						<Popconfirm
+							title="Delete the article"
+							description="Are you sure to delete this article?"
+							onConfirm={async () => {
 								try {
 									await deleteArticle(id)
 
@@ -90,7 +90,12 @@ export const Article = ({
 									console.error(err)
 								}
 							}}
-						/>
+						>
+							<Button
+								icon={<DeleteOutlined />}
+								danger
+							/>
+						</Popconfirm>
 					)}
 				</Flex>
 			</Flex>
