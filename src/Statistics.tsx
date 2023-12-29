@@ -2,6 +2,7 @@ import { UserOutlined } from '@ant-design/icons'
 import {
 	Avatar,
 	Modal,
+	Skeleton,
 	Tooltip,
 	Typography,
 	message,
@@ -87,7 +88,7 @@ export const Statistics = ({
 				Voters
 			</Typography.Title>
 			<Avatar.Group>
-				{voters &&
+				{voters ? (
 					voters.map(
 						({
 							user: { id, name, avatar },
@@ -96,7 +97,10 @@ export const Statistics = ({
 								<Avatar src={avatar} />
 							</Tooltip>
 						),
-					)}
+					)
+				) : (
+					<Skeleton.Avatar active />
+				)}
 			</Avatar.Group>
 		</Modal>
 	)
