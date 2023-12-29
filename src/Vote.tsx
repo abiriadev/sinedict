@@ -17,7 +17,8 @@ export const Vote = ({
 	up,
 	down,
 	value,
-}: VoteProps) => {
+	refresh,
+}: VoteProps & { refresh: () => Promise<void> }) => {
 	const currentUser = useAtomValue(currentUserAtom)
 
 	return (
