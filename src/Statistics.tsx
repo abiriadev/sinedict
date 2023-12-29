@@ -77,6 +77,15 @@ export const Statistics = ({
 			<Typography.Text>
 				{author?.name ?? 'author'}
 			</Typography.Text>
+			<Typography.Title level={3}>
+				Voters
+			</Typography.Title>
+			<Avatar.Group>
+				{voters &&
+					voters.map(({ user }) => (
+						<Avatar src={user.avatar} />
+					))}
+			</Avatar.Group>
 		</Modal>
 	)
 }
