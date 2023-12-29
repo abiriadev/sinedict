@@ -8,11 +8,14 @@ import {
 import { supabase } from './supabase'
 
 // failable
-export const fetchAll = async (): Promise<
-	Array<ArticleData>
-> => {
+export const fetchAll = async (
+	userid?: Id,
+): Promise<Array<ArticleData>> => {
 	const { data, error } = await supabase.rpc(
 		'fetch_articles',
+		{
+			userid,
+		},
 	)
 
 	if (error) throw error

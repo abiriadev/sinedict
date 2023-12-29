@@ -10,12 +10,14 @@ export interface UserData {
 export interface ArticleData {
 	id: Id
 	author: Id | null
+	ismine: boolean
 	word: string
 	description: string
 	example: string
 	votes: number
 	up: number
 	down: number
+	myvote: number
 }
 
 export interface ArticleForm {
