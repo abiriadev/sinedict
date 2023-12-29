@@ -1,4 +1,4 @@
-<h1 align="center">:arrow_up: SineDict :arrow_down:</h1>
+<h1 align="center">SineDict</h1>
 <p align="center">모두가 함께 만들어가는 시네어 사전</p>
 
 # 개요
@@ -18,15 +18,15 @@ $ pnpm build
 
 # TODO
 
-- [x] 추천순 정렬
-- [ ] 단어 편집 기능
-- [x] 단어 삭제 기능
-- [ ] 반응형 레이아웃
-- [ ] 사용법 및 경고 문구
-- [x] 단어 투표 통계
-- [ ] 관리자 페이지
-- [ ] infinite scrolling
-- [ ] 클라이언트 상태 동기화
+-   [x] 추천순 정렬
+-   [ ] 단어 편집 기능
+-   [x] 단어 삭제 기능
+-   [ ] 반응형 레이아웃
+-   [ ] 사용법 및 경고 문구
+-   [x] 단어 투표 통계
+-   [ ] 관리자 페이지
+-   [ ] infinite scrolling
+-   [ ] 클라이언트 상태 동기화
 
 # 참고
 
