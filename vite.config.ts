@@ -9,6 +9,7 @@ export default defineConfig(({ mode }) => {
 		plugins: [
 			react(),
 			VitePluginRadar({
+				enableDev: true,
 				analytics: {
 					id: env.GA_MEASUREMENT_ID,
 				},
