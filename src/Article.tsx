@@ -1,17 +1,14 @@
 import { Button, Flex, Typography } from 'antd'
 import { Id, VoteValue } from './interface'
 import {
-	UpOutlined,
-	DownOutlined,
 	DeleteOutlined,
 	EditOutlined,
 	BarChartOutlined,
 } from '@ant-design/icons'
-import { deleteArticle, downVote, upVote } from './api'
+import { deleteArticle } from './api'
 import { Statistics } from './Statistics'
 import { useState } from 'react'
-import { useAtomValue } from 'jotai'
-import { currentUserAtom } from './states'
+import { Vote } from './Vote.1'
 
 export interface ArticleProp {
 	id: Id
@@ -37,67 +34,19 @@ export const Article = ({
 	myvote,
 	refresh,
 }: ArticleProp & { refresh: () => Promise<void> }) => {
-	const currentUser = useAtomValue(currentUserAtom)
 	const [isStatisticsOpen, setIsStatisticsOpen] =
 		useState(false)
 
 	return (
 		<div className="p-4 bg-neutral-50 rounded-lg shadow-sm shadow-primary border border-primary">
 			<Flex gap="middle">
-				<Flex vertical align="center" gap="middle">
-					<Flex vertical align="center">
-						<UpOutlined
-							className={
-								myvote === 1
-									? 'stroke-primary stroke-[75px]'
-									: 'stroke-current stroke-[20px] '
-							}
-							onClick={async () => {
-								if (currentUser === null) {
-									console.log(
-										'login first',
-									)
-									return
-								}
-
-								try {
-									await upVote(
-										id,
-										currentUser.id,
-									)
-									refresh()
-								} catch {}
-							}}
-						/>
-						<span>{up}</span>
-					</Flex>
-					<Flex vertical align="center">
-						<span>{down}</span>
-						<DownOutlined
-							className={
-								myvote === -1
-									? 'stroke-primary stroke-[75px]'
-									: 'stroke-current stroke-[20px] '
-							}
-							onClick={async () => {
-								if (currentUser === null) {
-									console.log(
-										'login first',
-									)
-									return
-								}
-
-								try {
-									await downVote(
-										id,
-										currentUser.id,
-									)
-									refresh()
-								} catch {}
-							}}
-						/>
-					</Flex>
-				</Flex>
+				<Vote
+					article={id}
+					up={up}
+					down={down}
+					value={myvote}
+					refresh={refresh}
+				/>
 				<Flex
 					vertical
 					align="start"
