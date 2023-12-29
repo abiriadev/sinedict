@@ -24,13 +24,13 @@ export const AppBar = () => {
 					}}
 				>
 					<Flex gap="large" align="center">
-						<a href="" className="leading-none">
+						<a href="https://www.twitch.tv/sinesokofficial" className="leading-none">
 							<ImTwitch />
 						</a>
-						<a href="" className="leading-none">
+						<a href="https://discord.gg/VZh5KYFr8K" className="leading-none">
 							<FaDiscord />
 						</a>
-						<a href="" className="leading-none">
+						<a href="https://github.com/abiriadev/sinedict" className="leading-none">
 							<FaGithub />
 						</a>
 						<User />
