@@ -95,6 +95,7 @@ export const Article = ({
 				</Flex>
 			</Flex>
 			<Statistics
+				article={id}
 				authorId={author}
 				open={isStatisticsOpen}
 				setOpen={setIsStatisticsOpen}

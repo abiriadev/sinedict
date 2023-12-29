@@ -1,16 +1,18 @@
 import { UserOutlined } from '@ant-design/icons'
 import { Avatar, Modal, Typography, message } from 'antd'
 import { useEffect, useState } from 'react'
-import { Id, UserData } from './interface'
-import { fetchUser } from './api'
+import { Id, UserData, VoterData } from './interface'
+import { fetchUser, fetchVoters } from './api'
 
 export interface StatisticsProp {
+	article: Id
 	authorId: Id | null
 	open: boolean
 	setOpen: (open: boolean) => void
 }
 
 export const Statistics = ({
+	article,
 	authorId,
 	open,
 	setOpen,
@@ -18,6 +20,8 @@ export const Statistics = ({
 	const [author, setAuthor] = useState<UserData | null>(
 		null,
 	)
+	const [voters, setVoters] =
+		useState<Array<VoterData> | null>(null)
 	const [msg, ctxHolder] = message.useMessage()
 
 	useEffect(() => {
@@ -28,6 +32,23 @@ export const Statistics = ({
 			} catch (err) {
 				msg.error(
 					`failed to fetch user data: ${JSON.stringify(
+						err,
+						null,
+						2,
+					)}`,
+				)
+			}
+		})()
+	}, [open])
+
+	useEffect(() => {
+		if (!open) return
+		;(async () => {
+			try {
+				setVoters(await fetchVoters(article))
+			} catch (err) {
+				msg.error(
+					`failed to fetch voters data: ${JSON.stringify(
 						err,
 						null,
 						2,
