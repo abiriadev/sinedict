@@ -13,6 +13,7 @@ export interface ArticleData {
 	word: string
 	description: string
 	example: string
+	votes: number
 	up: number
 	down: number
 }

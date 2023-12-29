@@ -11,13 +11,13 @@ import { supabase } from './supabase'
 export const fetchAll = async (): Promise<
 	Array<ArticleData>
 > => {
-	const { data, error } = await supabase
-		.from('articles')
-		.select()
+	const { data, error } = await supabase.rpc(
+		'fetch_articles',
+	)
 
 	if (error) throw error
 
-	return data.map(d => ({ ...d, up: 0, down: 0 }))
+	return data
 }
 
 // failable
