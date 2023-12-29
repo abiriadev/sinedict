@@ -34,3 +34,8 @@ export interface VoteForm {
 	article: Id
 	value: VoteValue
 }
+
+export interface VoterData {
+	value: VoteValue
+	user: UserData
+}

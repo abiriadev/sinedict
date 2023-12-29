@@ -129,3 +129,14 @@ export const unVote = async (article: Id, user: Id) => {
 
 	if (error) throw error
 }
+
+export const fetchVoters = async (article: Id) => {
+	const { data, error } = await supabase
+		.from('votes')
+		.select('user (id, name, avatar), value')
+		.eq('article', article)
+
+	if (error) throw error
+
+	return data
+}
