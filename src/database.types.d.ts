@@ -109,17 +109,21 @@ export interface Database {
 		}
 		Functions: {
 			fetch_articles: {
-				Args: Record<PropertyKey, never>
+				Args: {
+					userid: string
+				}
 				Returns: {
 					id: string
 					created_at: string
 					author: string
+					ismine: boolean
 					word: string
 					description: string
 					example: string
 					votes: number
 					up: number
 					down: number
+					myvote: number
 				}[]
 			}
 		}
