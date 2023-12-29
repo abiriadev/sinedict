@@ -1,5 +1,11 @@
 import { UserOutlined } from '@ant-design/icons'
-import { Avatar, Modal, Typography, message } from 'antd'
+import {
+	Avatar,
+	Modal,
+	Tooltip,
+	Typography,
+	message,
+} from 'antd'
 import { useEffect, useState } from 'react'
 import { Id, UserData, VoterData } from './interface'
 import { fetchUser, fetchVoters } from './api'
@@ -82,9 +88,15 @@ export const Statistics = ({
 			</Typography.Title>
 			<Avatar.Group>
 				{voters &&
-					voters.map(({ user }) => (
-						<Avatar src={user.avatar} />
-					))}
+					voters.map(
+						({
+							user: { id, name, avatar },
+						}) => (
+							<Tooltip key={id} title={name}>
+								<Avatar src={avatar} />
+							</Tooltip>
+						),
+					)}
 			</Avatar.Group>
 		</Modal>
 	)
