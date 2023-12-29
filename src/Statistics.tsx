@@ -71,7 +71,7 @@ export const Statistics = ({
 
 	return (
 		<Modal
-			title="Statistics"
+			title="통계"
 			open={open}
 			onCancel={() => setOpen(false)}
 			footer={() => <></>}

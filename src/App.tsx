@@ -91,7 +91,7 @@ function App() {
 										)
 									}
 								>
-									Add new
+									새 시네어 추가하기
 								</Button>
 								<NewArticle
 									open={isNewArticleOpen}

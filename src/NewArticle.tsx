@@ -21,7 +21,8 @@ export const NewArticle = ({
 
 	return (
 		<Modal
-			title="New article"
+			title="새로운 시네어"
+			okText="추가"
 			open={open}
 			onOk={async () => {
 				try {
@@ -40,7 +41,7 @@ export const NewArticle = ({
 			<Form form={form} layout="vertical">
 				<Form.Item<NewArticleForm>
 					name="word"
-					label="Word"
+					label="시네어"
 					rules={[
 						{
 							required: true,
@@ -53,7 +54,7 @@ export const NewArticle = ({
 				</Form.Item>
 				<Form.Item<NewArticleForm>
 					name="description"
-					label="Description"
+					label="단어 설명"
 					rules={[
 						{
 							required: true,
@@ -71,7 +72,7 @@ export const NewArticle = ({
 				</Form.Item>
 				<Form.Item<NewArticleForm>
 					name="example"
-					label="Example"
+					label="단어 사용 예시"
 					rules={[
 						{
 							required: true,

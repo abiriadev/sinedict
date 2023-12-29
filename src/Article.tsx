@@ -76,7 +76,7 @@ export const Article = ({
 							setIsStatisticsOpen(true)
 						}
 					/>
-					<Button icon={<EditOutlined />} />
+					{/* <Button icon={<EditOutlined />} /> */}
 					{ismine && (
 						<Button
 							icon={<DeleteOutlined />}

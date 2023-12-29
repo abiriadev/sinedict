@@ -15,7 +15,7 @@ export const AppBar = () => {
 				className="h-full"
 			>
 				<Typography.Title level={1}>
-					UpDict
+					시네사전
 				</Typography.Title>
 				<IconContext.Provider
 					value={{

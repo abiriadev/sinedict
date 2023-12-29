@@ -34,7 +34,7 @@ export const User = () => {
 							},
 							{
 								key: 'sign out',
-								label: 'Sign out',
+								label: '로그아웃',
 								danger: true,
 								icon: <LogoutOutlined />,
 							},
@@ -42,7 +42,7 @@ export const User = () => {
 					: [
 							{
 								key: 'sign in',
-								label: 'Sign in',
+								label: '로그인',
 								icon: <LoginOutlined />,
 							},
 					  ],
