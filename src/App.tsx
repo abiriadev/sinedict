@@ -186,12 +186,23 @@ function App() {
 									subTitle="Seems like the backend doesn't work or was crashed."
 									extra={[
 										<Button type="primary">
-											Open an issue on
-											GitHub
+											<a
+												href={`https://github.com/${'abiriadev/sinedict'}/issues/new`}
+												target="_blank"
+											>
+												Open an
+												issue on
+												GitHub
+											</a>
 										</Button>,
 										<Button>
-											Contact
-											developer
+											<a
+												href={`https://discord.com/users/${'662201438621138954'}`}
+												target="_blank"
+											>
+												Contact
+												developer
+											</a>
 										</Button>,
 									]}
 								></Result>
